@@ -1,26 +1,31 @@
+// React Basic and Bootstrap
 import React from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Row,
   Col,
   Form,
-  Card,
-  CardBody,
+  Input,
   Label,
   Button,
-  Input,
+  Card,
+  CardBody,
   FormFeedback
 } from "reactstrap";
-import { Link } from "react-router-dom";
 
-//Import Icons
-import FeatherIcon from "feather-icons-react";
-import ThemeSwitcher from "../../../components/Layout/ThemeSwitcher";
 // Formik Validation
 import * as Yup from "yup";
 import { useFormik } from "formik";
+//Import Icons
+import FeatherIcon from "feather-icons-react";
 
-const PageLoginThree = () => {
+// import images
+import loginImg from "../../../assets/images/user/login.svg";
+import Footer1 from "../PageFooterLayouts/Footer1";
+import NavBar from "../../CorporateBusiness/NavBar";
+
+const LoginPage = () => {
 
   const validation = useFormik({
     enableReinitialize: true,
@@ -39,37 +44,45 @@ const PageLoginThree = () => {
       // console.log(values)
     }
   });
-
   return (
     <React.Fragment>
       <div className="back-to-home">
-        <Link to="index" className="back-button btn btn-icon btn-primary">
+        <Link to="/" className="back-button btn btn-icon btn-primary">
           <i>
             <FeatherIcon icon="arrow-left" className="icons" />
           </i>
         </Link>
       </div>
-
-      <section className="bg-home bg-circle-gradiant d-flex align-items-center">
-        <div className="bg-overlay bg-overlay-white"></div>
+      <section className="bg-home d-flex align-items-center">
         <Container>
-          <Row className="justify-content-center">
-            <Col lg={5} md={8}>
-              <Card className="login-page shadow rounded border-0">
+          <Row className="align-items-center">
+            <Col lg={7} md={6}>
+              <div className="me-lg-5">
+                <img
+                  src={loginImg}
+                  className="img-fluid d-block mx-auto"
+                  alt=""
+                />
+              </div>
+            </Col>
+            <Col lg={5} md={6}>
+              <Card className="login-page bg-white shadow rounded border-0">
                 <CardBody>
-                  <h4 className="card-title text-center">Login</h4>
+                  <div className="card-title text-center">
+                    <h4 className="mb-4">Login</h4>
+                  </div>
                   <Form
                     onSubmit={(e) => {
                       e.preventDefault();
                       validation.handleSubmit();
                       return false;
                     }}
-                    className="login-form mt-4"
-                  >
+                    className="login-form mt-4" 
+                    >
                     <Row>
                       <Col lg={12}>
                         <div className="mb-3">
-                          <Label className="form-label">
+                          <Label className="form-label" htmlFor="email">
                             Your Email <span className="text-danger">*</span>
                           </Label>
                           <div className="form-icon position-relative">
@@ -81,7 +94,7 @@ const PageLoginThree = () => {
                             </i>
                           </div>
                           <Input
-                            type="email"
+                            type="text"
                             className="form-control ps-5"
                             name="email"
                             id="email"
@@ -101,7 +114,7 @@ const PageLoginThree = () => {
 
                       <Col lg={12}>
                         <div className="mb-3">
-                          <Label className="form-label">
+                          <Label className="form-label" htmlFor="password">
                             Password <span className="text-danger">*</span>
                           </Label>
                           <div className="form-icon position-relative">
@@ -117,7 +130,7 @@ const PageLoginThree = () => {
                             className="form-control ps-5"
                             name="password"
                             id="password"
-                            placeholder="Password"
+                            placeholder="Password"                            
                             onChange={validation.handleChange}
                             onBlur={validation.handleBlur}
                             value={validation.values.password || ""}
@@ -148,51 +161,14 @@ const PageLoginThree = () => {
                               </Label>
                             </div>
                           </div>
-                          <p className="forgot-pass mb-0">
-                            <Link
-                              to="auth-re-password-three"
-                              className="text-dark fw-bold"
-                            >
-                              Forgot password ?
-                            </Link>
-                          </p>
                         </div>
                       </Col>
                       <Col lg={12} className="mb-0">
                         <div className="d-grid">
                           <Button color="primary">
-                          Sing in
+                            Sign in
                           </Button>
                         </div>
-                      </Col>
-                      <Col lg={12} className="mt-4 text-center">
-                        <h6>Or Login With</h6>
-                        <Row>
-                          <div className="col-6 mt-3">
-                            <div className="d-grid">
-                              <Link to="#" className="btn btn-light"><i className="mdi mdi-facebook text-primary"></i> Facebook</Link>
-                            </div>
-                          </div>
-
-                          <div className="col-6 mt-3">
-                            <div className="d-grid">
-                              <Link to="#" className="btn btn-light"><i className="mdi mdi-google text-danger"></i> Google</Link>
-                            </div>
-                          </div>
-                        </Row>
-                      </Col>
-                      <Col xs={12} className="text-center">
-                        <p className="mb-0 mt-3">
-                          <small className="text-dark me-2">
-                            Don't have an account ?
-                          </small>{" "}
-                          <Link
-                            to="auth-signup-three"
-                            className="text-dark fw-bold"
-                          >
-                            Sign Up
-                          </Link>
-                        </p>
                       </Col>
                     </Row>
                   </Form>
@@ -202,10 +178,8 @@ const PageLoginThree = () => {
           </Row>
         </Container>
       </section>
-
-      <ThemeSwitcher/>
     </React.Fragment>
   );
-}
 
-export default PageLoginThree;
+}
+export default LoginPage;

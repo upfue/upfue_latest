@@ -18,6 +18,8 @@ import CorporateNew from "../pages/Pages/CorporateNew"
 import CorporateNewDetail from "../pages/Pages/CorporateNewDetail"
 import Terms from "../pages/Pages/CorporateTerms";
 import Privacy from "../pages/Pages/CorporatePrivacy";
+import ErrorPage from "../pages/Pages/CorporateError"
+import PageLogin from "../pages/Pages/AuthPages";
 
 const routes = [
   { path: "/", component: CorporateBusiness, isTopbarDark: true ,isWithoutLayout:false},
@@ -41,7 +43,8 @@ const routes = [
   { path: "/news-details", component: CorporateNewDetail, isWithoutLayout: true },
   { path: "/terms-conditions", component: Terms, isWithoutLayout: true },
   { path: "/privacy-policy", component: Privacy, isWithoutLayout: true },
- 
+  { path: "/admin", component: PageLogin, isWithoutLayout: true },
+  { path: "*", component: ErrorPage, isWithoutLayout: true },
 ];
 
 export default routes;
