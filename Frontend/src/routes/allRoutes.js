@@ -19,7 +19,7 @@ import CorporateNewDetail from "../pages/Pages/CorporateNewDetail"
 import Terms from "../pages/Pages/CorporateTerms";
 import Privacy from "../pages/Pages/CorporatePrivacy";
 import ErrorPage from "../pages/Pages/CorporateError"
-import PageLogin from "../pages/Pages/AuthPages";
+import PageLogin from "../pages/Pages/AuthPages/Login";
 
 const routes = [
   { path: "/", component: CorporateBusiness, isTopbarDark: true ,isWithoutLayout:false},
