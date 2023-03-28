@@ -14,7 +14,7 @@ import blog1 from '../../../assets/images/blog/01.jpg';
 import blog2 from '../../../assets/images/blog/07.jpg';
 import blog3 from '../../../assets/images/blog/08.jpg';
 
-class BlogDetails extends Component {
+class Newdetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -424,16 +424,36 @@ class BlogDetails extends Component {
                     <div className="widget mb-4 pb-2">
                       <h5 className="widget-title">Tags Cloud</h5>
                       <div className="tagcloud mt-4">
-                        <Link to="#" className="rounded">Business</Link>{" "}
-                        <Link to="#" className="rounded">Finance</Link>{" "}
-                        <Link to="#" className="rounded">Marketing</Link>{" "}
-                        <Link to="#" className="rounded">Fashion</Link>{" "}
-                        <Link to="#" className="rounded">Bride</Link>{" "}
-                        <Link to="#" className="rounded">Lifestyle</Link>{" "}
-                        <Link to="#" className="rounded">Travel</Link>{" "}
-                        <Link to="#" className="rounded">Beauty</Link>{" "}
-                        <Link to="#" className="rounded">Video</Link>{" "}
-                        <Link to="#" className="rounded">Audio</Link>
+                        <Link to="#" className="rounded">
+                          Business
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Finance
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Marketing
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Fashion
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Bride
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Lifestyle
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Travel
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Beauty
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Video
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Audio
+                        </Link>
                       </div>
                     </div>
 
@@ -463,4 +483,4 @@ class BlogDetails extends Component {
   }
 }
 
-export default BlogDetails;
+export default Newdetails;

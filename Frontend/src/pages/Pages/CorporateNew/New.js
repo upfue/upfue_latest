@@ -12,7 +12,7 @@ import blog6 from "../../../assets/images/blog/06.jpg";
 import blog7 from "../../../assets/images/blog/07.jpg";
 import blog8 from "../../../assets/images/blog/08.jpg";
 
-class Blog extends Component {
+class New extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -111,4 +111,4 @@ class Blog extends Component {
     }
 }
 
-export default Blog;
+export default New;

@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import NavBar from '../../CorporateBusiness/NavBar';
 import Section from './Section';
-import Blog from "./New";
 import Footer from '../PageFooterLayouts/Footer1';
+import New from './New';
 
-class CorporateBlog extends Component {
+class CorporateNew extends Component {
     render() {
         return (
             <React.Fragment>
                 <NavBar />
                 <Section />
-                <Blog />
+                <New />
                 <Footer/>
             </React.Fragment>
         );
     }
 }
 
-export default CorporateBlog;
+export default CorporateNew;

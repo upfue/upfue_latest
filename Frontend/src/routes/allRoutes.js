@@ -26,8 +26,6 @@ const routes = [
   { path: "/about", component: CorporateAbout, isWithoutLayout: true },
   { path: "/services", component: CorporateServices, isWithoutLayout: true },
   { path: "/team", component: CorporateTeam, isWithoutLayout: true },
-  { path: "/blog", component: CorporateBlog, isWithoutLayout: true },
-  { path: "/blog-detail", component: CorporateBlogDetail, isWithoutLayout: true },
   { path: "/gov-grant-psg", component: CorporatePSG, isWithoutLayout: true },
   { path: "/gov-grant-edg", component: CorporateEDG, isWithoutLayout: true },
   { path: "/job", component: CorporateJob, isWithoutLayout: true },

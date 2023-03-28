@@ -1,6 +1,6 @@
 // React Basic and Bootstrap
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 
 //Import Icons
@@ -53,7 +53,6 @@ class ErrorPage extends Component {
               <Col md="12" className="text-center">
                 <Link
                   to="#"
-                  onClick={this.props.history.goBack}
                   className="btn btn-outline-primary mt-4"
                 >
                   Go Back
@@ -70,4 +69,4 @@ class ErrorPage extends Component {
     );
   }
 }
-export default withRouter(ErrorPage);
+export default ErrorPage;

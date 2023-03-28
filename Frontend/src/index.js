@@ -9,11 +9,11 @@ import { AppProvider } from './context/appContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.Fragment>
-    <AppProvider>
-      <BrowserRouter>
+  <React.StrictMode>
+    <React.Fragment>
+      <AppProvider>
         <App />
-      </BrowserRouter>
-    </AppProvider>
-  </React.Fragment>,
+      </AppProvider>
+    </React.Fragment>
+  </React.StrictMode>
 );

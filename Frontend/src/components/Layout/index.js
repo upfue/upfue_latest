@@ -1,5 +1,4 @@
 import React, { Component, Suspense } from "react";
-import { withRouter } from "react-router-dom";
 import BackToTop from "./backToTop";
 
 
@@ -40,4 +39,4 @@ class Layout extends Component {
   }
 }
 
-export default withRouter(Layout);
+export default Layout;

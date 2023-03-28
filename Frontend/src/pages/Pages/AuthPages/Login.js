@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -20,6 +19,7 @@ import React, { useEffect, useState } from 'react';
 import logo from '../../../assets/images/logo-icon.png';
 import { FormRow, Alert } from '../../../components';
 import { useAppContext } from '../../../context/appContext';
+import { useNavigate, Link } from 'react-router-dom';
 
 const initialState = {
   name: '',
@@ -29,21 +29,41 @@ const initialState = {
 };
 
 const LoginPage = () => {
-  const [values, setValues] = useState(initialState);
-  const { isLoading, showAlert, displayAlert } = useAppContext();
+  const navigate = useNavigate();
 
+  const [values, setValues] = useState(initialState);
+  const { user, isLoading, showAlert, displayAlert, registerUser } =
+    useAppContext();
+
+  const toggleMember = () => {
+    setValues({ ...values, isAdmin: !values.isAdmin });
+  };
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    const { email, password, isAdmin,name } = values;
-    if (!email || !password || (!isAdmin&& !name)) {
+    const { email, password, isAdmin, name } = values;
+    if (!email || !password || (!isAdmin && !name)) {
       displayAlert();
       return;
     }
+    const currentUser = { name, email, password };
+    if (isAdmin) {
+      console.log('already a admin');
+    } else {
+      registerUser(currentUser);
+    }
     console.log(values);
   };
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    }
+  }, [user, navigate]);
 
   return (
     <React.Fragment>
@@ -69,25 +89,39 @@ const LoginPage = () => {
             <Col lg={5} md={6}>
               <Card className="login-page bg-white shadow rounded border-0">
                 <CardBody>
-                  <img
-                    src={logo}
-                    width={96}
-                    className="mx-auto d-block"
-                    alt=""
-                  />
-                  <div className="card-title text-center">
-                    <h4 className="mb-4">Login</h4>
-                    {showAlert && <Alert />}
-                  </div>
                   <Form className="login-form mt-4" onSubmit={onSubmit}>
+                    <img
+                      src={logo}
+                      width={96}
+                      className="mx-auto d-block"
+                      alt=""
+                    />
+                    <div className="card-title text-center">
+                      <h4 className="mb-4">
+                        {values.isAdmin ? 'Login' : 'Register'}
+                      </h4>
+                      {showAlert && <Alert />}
+                    </div>
+
                     <Row>
+                      {!values.isAdmin && (
+                        <Col lg={12}>
+                          <FormRow
+                            type="text"
+                            name="Your name"
+                            value={values.name}
+                            handleChange={handleChange}
+                            icon="user"
+                          />
+                        </Col>
+                      )}
                       <Col lg={12}>
                         <FormRow
                           type="text"
                           name="Your Email"
                           value={values.email}
                           handleChange={handleChange}
-                          icon="user"
+                          icon="mail"
                         />
                       </Col>
                       <Col lg={12}>
@@ -121,8 +155,27 @@ const LoginPage = () => {
                       </Col>
                       <Col lg={12} className="mb-0">
                         <div className="d-grid">
-                          <Button type="submit" color="primary">
-                            Sign in
+                          <Button
+                            type="submit"
+                            color="primary"
+                            disabled={isLoading}
+                          >
+                            Submit
+                          </Button>
+                        </div>
+                      </Col>
+                      <Col lg={12} className="mt-3">
+                        <div className="text-center">
+                          {values.isAdmin
+                            ? 'Not a member yet'
+                            : 'Already a Admin?'}
+                          <Button
+                            type="button"
+                            className="btn mx-3 text-primary"
+                            style={{ backgroundColor: `white`, border: `none` }}
+                            onClick={toggleMember}
+                          >
+                            {values.isAdmin ? 'Register' : 'Login'}
                           </Button>
                         </div>
                       </Col>
