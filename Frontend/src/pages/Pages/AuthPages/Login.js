@@ -18,7 +18,7 @@ import loginImg from '../../../assets/images/user/login.svg';
 import React, { useEffect, useState } from 'react';
 import logo from '../../../assets/images/logo-icon.png';
 import { FormRow, Alert } from '../../../components';
-import { useAppContext } from '../../../context/appContext';
+import { useAppContext } from '../../../context/appContext.js';
 import { useNavigate, Link } from 'react-router-dom';
 
 const initialState = {
@@ -32,7 +32,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const [values, setValues] = useState(initialState);
-  const { user, isLoading, showAlert, displayAlert, registerUser } =
+  const { user, isLoading, showAlert, displayAlert, registerUser, loginUser } =
     useAppContext();
 
   const toggleMember = () => {
@@ -48,19 +48,19 @@ const LoginPage = () => {
       displayAlert();
       return;
     }
+    console.log(values);
     const currentUser = { name, email, password };
     if (isAdmin) {
-      console.log('already a admin');
+      loginUser(currentUser);
     } else {
       registerUser(currentUser);
     }
-    console.log(values);
   };
 
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        navigate('/');
+        navigate('/dashboard');
       }, 3000);
     }
   }, [user, navigate]);
@@ -108,7 +108,7 @@ const LoginPage = () => {
                         <Col lg={12}>
                           <FormRow
                             type="text"
-                            name="Your name"
+                            name="name"
                             value={values.name}
                             handleChange={handleChange}
                             icon="user"
@@ -117,8 +117,8 @@ const LoginPage = () => {
                       )}
                       <Col lg={12}>
                         <FormRow
-                          type="text"
-                          name="Your Email"
+                          type="email"
+                          name="email"
                           value={values.email}
                           handleChange={handleChange}
                           icon="mail"
@@ -126,15 +126,15 @@ const LoginPage = () => {
                       </Col>
                       <Col lg={12}>
                         <FormRow
-                          type="text"
-                          name="Your Password"
+                          type="password"
+                          name="password"
                           value={values.password}
                           handleChange={handleChange}
                           icon="key"
                         />
                       </Col>
 
-                      <Col lg={12}>
+                      {/* <Col lg={12}>
                         <div className="d-flex justify-content-between">
                           <div className="mb-3">
                             <div className="form-check">
@@ -152,7 +152,7 @@ const LoginPage = () => {
                             </div>
                           </div>
                         </div>
-                      </Col>
+                      </Col> */}
                       <Col lg={12} className="mb-0">
                         <div className="d-grid">
                           <Button

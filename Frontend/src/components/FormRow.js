@@ -5,7 +5,7 @@ import FeatherIcon from 'feather-icons-react';
 const FormRow = ({ type, value, name, handleChange, labelText, icon }) => {
   return (
     <div className="mb-3">
-      <Label className="form-label" htmlFor={name}>
+      <Label className="form-label text-capitalize " htmlFor={name}>
         {labelText || name} <span className="text-danger">*</span>
       </Label>
       <div className="form-icon position-relative">

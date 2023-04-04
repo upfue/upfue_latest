@@ -5,7 +5,7 @@ import 'normalize.css';
 // import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from 'react-router-dom';
 
-import { AppProvider } from './context/appContext';
+import { AppProvider } from './context/appContext.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

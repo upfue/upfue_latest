@@ -27,7 +27,7 @@ class Section extends Component {
                     <Link to="/">Upfue</Link>
                   </li>{' '}
                   <li className="breadcrumb-item active" aria-current="page">
-                    Blog
+                    News
                   </li>
                 </ul>
               </nav>

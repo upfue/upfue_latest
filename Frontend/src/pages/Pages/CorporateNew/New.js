@@ -3,112 +3,105 @@ import { Link } from 'react-router-dom';
 import { Card, Col, Container, Row, CardBody } from 'reactstrap';
 
 //import images
-import blog1 from "../../../assets/images/blog/01.jpg";
-import blog2 from "../../../assets/images/blog/02.jpg";
-import blog3 from "../../../assets/images/blog/03.jpg";
-import blog4 from "../../../assets/images/blog/04.jpg";
-import blog5 from "../../../assets/images/blog/05.jpg";
-import blog6 from "../../../assets/images/blog/06.jpg";
-import blog7 from "../../../assets/images/blog/07.jpg";
-import blog8 from "../../../assets/images/blog/08.jpg";
+import JackMa from '../../../assets/images/blog/JackMa.png';
+import Alibaba from '../../../assets/images/Alibaba.jpg';
 
 class New extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            blog: [
-                {
-                    id: 1,
-                    img: blog1,
-                    badge: "Business",
-                    title: "How apps is changing the IT"
-                },
-                {
-                    id: 2,
-                    img: blog2,
-                    badge: "Career",
-                    title: "What Is Future Of Recruitment?"
-                },
-                {
-                    id: 3,
-                    img: blog3,
-                    badge: "Consulting",
-                    title: "Can Our Consultants Help?"
-                },
-                {
-                    id: 4,
-                    img: blog4,
-                    badge: "Business",
-                    title: "How apps is changing the IT world"
-                },
-                {
-                    id: 5,
-                    img: blog5,
-                    badge: "Consulting",
-                    title: "Coping Under the Current Climate"
-                },
-                {
-                    id: 6,
-                    img: blog6,
-                    badge: "Success",
-                    title: "Purpose-Driven Employers Succeed"
-                },
-                {
-                    id: 7,
-                    img: blog7,
-                    badge: "Corporate",
-                    title: "Corporate Teams Respond After Crisis"
-                },
-                {
-                    id: 8,
-                    img: blog8,
-                    badge: "Business",
-                    title: "Share Statistics With Team Leader"
-                },
-            ]
-        };
-    }
-    render() {
-        return (
-            <React.Fragment>
-                <section className="section">
-                    <Container>
-                        <Row>
-                            {(this.state.blog || []).map((item, key) => (
-                                <Col lg={4} md={6} xs={12} key={key} className="mb-4 pb-2">
-                                    <Card className="border-0 blog shadow overflow-hidden">
-                                        <img src={item.img} className="img-fluid" alt="" />
+  constructor(props) {
+    super(props);
+    this.state = {
+      news: [
+        {
+          id: 1,
+          img: JackMa,
+          link: '/news-details',
+          badge: 'Business',
+          title:
+            'Jack Ma, a former English teacher, met staff and toured classrooms at the Yungu School in Hangzhou',
+          date: '28 March 2023',
+        },
+        {
+          id: 2,
+          img: Alibaba,
+          link: '/news-details-1',
+          badge: 'Business',
+          title:
+            'Alibaba to be splitted into 6 groups and explore IPOs to depart from Jack Ma era',
+          date: '31 March 2023',
+        },
+      ],
+    };
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <section className="section">
+          <Container>
+            <Row>
+              {(this.state.news || []).map((item, key) => (
+                <Col
+                  lg={4}
+                  md={6}
+                  xs={12}
+                  key={key}
+                  className="mb-4 pb-2 d-flex"
+                >
+                  <Card className="border-0 blog shadow overflow-hidden">
+                    <Link to={item.link}>
+                      <img src={item.img} className="img-fluid" alt="" />
+                    </Link>
 
-                                        <CardBody className="content">
-                                            <ul className="list-unstyled d-flex justify-content-between">
-                                                <li className="text-muted">22nd June</li>
-                                                <li className="text-muted"><Link to="#" className="badge bg-soft-primary">{item.badge}</Link></li>
-                                            </ul>
+                    <CardBody className="content">
+                      <ul className="list-unstyled d-flex justify-content-between">
+                        <li className="text-muted">{item.date}</li>
+                        <li className="text-muted">
+                          <Link to="#" className="badge bg-soft-primary">
+                            {item.badge}
+                          </Link>
+                        </li>
+                      </ul>
 
-                                            <h5><Link to="#" className="card-title title text-dark">{item.title}</Link></h5>
+                      <h5>
+                        <Link to="#" className="card-title title text-dark">
+                          {item.title}
+                        </Link>
+                      </h5>
 
-                                            <div className="post-meta d-flex justify-content-between mt-3">
-                                                <Link to="/news-details" className="text-muted readmore">Read More <i className="uil uil-angle-right-b align-middle"></i></Link>
-                                            </div>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                            ))}
-                            <div className="col-12">
-                                <ul className="pagination justify-content-center mb-0">
-                                    <li className="page-item"><Link className="page-link" to="#" aria-label="Previous">Prev</Link></li>
-                                    <li className="page-item active"><Link className="page-link" to="#">1</Link></li>
-                                    <li className="page-item"><Link className="page-link" to="#">2</Link></li>
-                                    <li className="page-item"><Link className="page-link" to="#">3</Link></li>
-                                    <li className="page-item"><Link className="page-link" to="#" aria-label="Next">Next</Link></li>
-                                </ul>
-                            </div>
-                        </Row>
-                    </Container>
-                </section>
-            </React.Fragment>
-        );
-    }
+                      <div className="post-meta d-flex justify-content-between mt-3">
+                        <Link to={item.link} className="text-muted readmore">
+                          Read More{' '}
+                          <i className="uil uil-angle-right-b align-middle"></i>
+                        </Link>
+                      </div>
+                    </CardBody>
+                  </Card>
+                </Col>
+              ))}
+              <div className="col-12">
+                <ul className="pagination justify-content-center mb-0">
+                  <li className="page-item">
+                    <Link className="page-link" to="#" aria-label="Previous">
+                      Prev
+                    </Link>
+                  </li>
+                  <li className="page-item active">
+                    <Link className="page-link" to="#">
+                      1
+                    </Link>
+                  </li>
+                  <li className="page-item">
+                    <Link className="page-link" to="#" aria-label="Next">
+                      Next
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </Row>
+          </Container>
+        </section>
+      </React.Fragment>
+    );
+  }
 }
 
 export default New;

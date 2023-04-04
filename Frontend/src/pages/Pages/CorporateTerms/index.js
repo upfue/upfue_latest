@@ -1,6 +1,6 @@
 // React Basic and Bootstrap
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../PageFooterLayouts/Footer1';
 import NavBar from '../../CorporateBusiness/NavBar';
 import {
@@ -11,95 +11,44 @@ import {
   CardBody,
   CardHeader,
   Collapse,
-} from "reactstrap";
+} from 'reactstrap';
 
 //Import Icons
-import FeatherIcon from "feather-icons-react";
+import FeatherIcon from 'feather-icons-react';
 
 class Terms extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
-      col1: true,
-      col2: false,
-      col3: false,
-      col4: false,
-      col5: false,
+      date: new Date('2023-04-3'),
+      dateFormat: {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      },
     };
-    this.t_col1 = this.t_col1.bind(this);
-    this.t_col2 = this.t_col2.bind(this);
-    this.t_col3 = this.t_col3.bind(this);
-    this.t_col4 = this.t_col4.bind(this);
-    this.t_col5 = this.t_col5.bind(this);
-  }
-
-  t_col1() {
-    this.setState({
-      col1: !this.state.col1,
-      col2: false,
-      col3: false,
-      col4: false,
-      col5: false,
-    });
-  }
-  t_col2() {
-    this.setState({
-      col2: !this.state.col2,
-      col1: false,
-      col3: false,
-      col4: false,
-      col5: false,
-    });
-  }
-  t_col3() {
-    this.setState({
-      col3: !this.state.col3,
-      col2: false,
-      col1: false,
-      col4: false,
-      col5: false,
-    });
-  }
-  t_col4() {
-    this.setState({
-      col4: !this.state.col4,
-      col2: false,
-      col3: false,
-      col1: false,
-      col5: false,
-    });
-  }
-  t_col5() {
-    this.setState({
-      col5: !this.state.col5,
-      col2: false,
-      col3: false,
-      col1: false,
-      col4: false,
-    });
   }
 
   componentDidMount() {
-    document.body.classList = "";
-    window.addEventListener("scroll", this.scrollNavigation, true);
+    document.body.classList = '';
+    window.addEventListener('scroll', this.scrollNavigation, true);
   }
 
   // Make sure to remove the DOM listener when the component is unmounted.
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.scrollNavigation, true);
+    window.removeEventListener('scroll', this.scrollNavigation, true);
   }
 
   scrollNavigation = () => {
     var doc = document.documentElement;
-    const navBar = document.getElementById("topnav");
+    const navBar = document.getElementById('topnav');
     var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
     if (navBar != null) {
       if (top > 80) {
-        navBar.classList.add("nav-sticky");
+        navBar.classList.add('nav-sticky');
       } else {
-        navBar.classList.remove("nav-sticky");
-        document.querySelector(".settingbtn").classList.add("btn-soft-primary");
+        navBar.classList.remove('nav-sticky');
+        document.querySelector('.settingbtn').classList.add('btn-soft-primary');
       }
     }
   };
@@ -107,7 +56,7 @@ class Terms extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar/>
+        <NavBar />
         {/* breadcrumb */}
         <section className="bg-half-170 bg-light d-table w-100">
           <Container>
@@ -115,6 +64,16 @@ class Terms extends Component {
               <Col lg={12} className="text-center">
                 <div className="pages-heading">
                   <h4 className="title mb-0"> Terms of Services </h4>
+                  <ul className="list-unstyled mt-4 mb-0">
+                    <li className="list-inline-item h6 date text-muted">
+                      {' '}
+                      <span className="text-dark">Last Revised :</span>{' '}
+                      {this.state.date.toLocaleDateString(
+                        'en-us',
+                        this.state.dateFormat,
+                      )}
+                    </li>
+                  </ul>
                 </div>
               </Col>
             </Row>
@@ -122,8 +81,12 @@ class Terms extends Component {
             <div className="position-breadcrumb">
               <nav aria-label="breadcrumb" className="d-inline-block">
                 <ul className="breadcrumb rounded shadow mb-0 px-4 py-2">
-                  <li className="breadcrumb-item"><Link to="/">Upfue</Link></li>{" "}
-                  <li className="breadcrumb-item active" aria-current="page">Terms & Conditon</li>
+                  <li className="breadcrumb-item">
+                    <Link to="/">Upfue</Link>
+                  </li>{' '}
+                  <li className="breadcrumb-item active" aria-current="page">
+                    Terms & Conditon
+                  </li>
                 </ul>
               </nav>
             </div>
@@ -150,271 +113,76 @@ class Terms extends Component {
               <Col lg={9}>
                 <Card className="shadow border-0 rounded">
                   <CardBody>
+                    <h3 className="card-title text-center">Overview :</h3>
                     <h5 className="card-title">Introduction :</h5>
                     <p className="text-muted">
-                      It seems that only fragments of the original text remain
-                      in the Lorem Ipsum texts used today. One may speculate
-                      that over the course of time certain letters were added or
-                      deleted at various positions within the text.
+                      These terms and conditions govern the use of our website
+                      and the services we provide. By accessing or using our
+                      website, you agree to these terms and conditions in full.
+                      If you do not accept these terms and conditions or any
+                      part of them, you should not use our website.
                     </p>
-
-                    <h5 className="card-title">User Agreements :</h5>
+                    <h5 className="card-title">Use of Website :</h5>
                     <p className="text-muted">
-                      The most well-known dummy text is the 'Lorem Ipsum', which
-                      is said to have <b className="text-danger">originated</b>{" "}
-                      in the 16th century. Lorem Ipsum is{" "}
-                      <b className="text-danger">composed</b> in a pseudo-Latin
-                      language which more or less{" "}
-                      <b className="text-danger">corresponds</b> to 'proper'
-                      Latin. It contains a series of real Latin words. This
-                      ancient dummy text is also{" "}
-                      <b className="text-danger">incomprehensible</b>, but it
-                      imitates the rhythm of most European languages in Latin
-                      script. The <b className="text-danger">advantage</b> of
-                      its Latin origin and the relative{" "}
-                      <b className="text-danger">meaninglessness</b> of Lorum
-                      Ipsum is that the text does not attract attention to
-                      itself or distract the viewer's{" "}
-                      <b className="text-danger">attention</b> from the layout.
+                      You must ensure that all information you provide to us
+                      through our website is accurate, complete, and not
+                      misleading. You are responsible for keeping your login
+                      details confidential and secure.
                     </p>
+                    <h5 className="card-title">Intellectual Property :</h5>
                     <p className="text-muted">
-                      There is now an <b className="text-danger">abundance</b>{" "}
-                      of readable dummy texts. These are usually used when a
-                      text is <b className="text-danger">required purely</b> to
-                      fill a space. These alternatives to the classic Lorem
-                      Ipsum texts are often amusing and tell short, funny or{" "}
-                      <b className="text-danger">nonsensical</b> stories.
+                      All intellectual property rights in our website and the
+                      material published on it are owned by us or our licensors.
+                      You may not copy, reproduce, distribute, or otherwise use
+                      any material from our website without our prior written
+                      consent.
                     </p>
+                    <h5 className="card-title">Limitation of Liability :</h5>
                     <p className="text-muted">
-                      It seems that only{" "}
-                      <b className="text-danger">fragments</b> of the original
-                      text remain in the Lorem Ipsum texts used today. One may
-                      speculate that over the course of time certain letters
-                      were added or deleted at various positions within the
-                      text.
+                      We will not be liable for any loss or damage arising out
+                      of or in connection with the use of our website or any
+                      information or services provided through it. We will not
+                      be liable for any indirect or consequential loss or damage
+                      whatsoever.
                     </p>
-
-                    <h5 className="card-title">Restrictions :</h5>
+                    <h5 className="card-title">
+                      Links to Third-Party Websites :
+                    </h5>
                     <p className="text-muted">
-                      You are specifically restricted from all of the following
-                      :
+                      Our website may contain links to third-party websites.
+                      These links are provided for your convenience only, and we
+                      do not endorse or accept any responsibility for the
+                      content or use of these websites.
                     </p>
-                    <ul className="list-unstyled feature-list text-muted">
-                      <li>
-                        <i>
-                          <FeatherIcon
-                            icon="arrow-right"
-                            className="fea icon-sm me-2"
-                          />
-                        </i>
-                        Digital Marketing Solutions for Tomorrow
-                      </li>
-                      <li>
-                        <i>
-                          <FeatherIcon
-                            icon="arrow-right"
-                            className="fea icon-sm me-2"
-                          />
-                        </i>
-                        Our Talented & Experienced Marketing Agency
-                      </li>
-                      <li>
-                        <i>
-                          <FeatherIcon
-                            icon="arrow-right"
-                            className="fea icon-sm me-2"
-                          />
-                        </i>
-                        Create your own skin to match your brand
-                      </li>
-                      <li>
-                        <i>
-                          <FeatherIcon
-                            icon="arrow-right"
-                            className="fea icon-sm me-2"
-                          />
-                        </i>
-                        Digital Marketing Solutions for Tomorrow
-                      </li>
-                      <li>
-                        <i>
-                          <FeatherIcon
-                            icon="arrow-right"
-                            className="fea icon-sm me-2"
-                          />
-                        </i>
-                        Our Talented & Experienced Marketing Agency
-                      </li>
-                      <li>
-                        <i>
-                          <FeatherIcon
-                            icon="arrow-right"
-                            className="fea icon-sm me-2"
-                          />
-                        </i>
-                        Create your own skin to match your brand
-                      </li>
-                    </ul>
-
-                    <h5 className="card-title">Users Question & Answer :</h5>
-                    <div className="faq-content mt-4">
-                      <div className="accordion" id="accordionExample">
-                        <Card className="border-0 rounded mb-2">
-                          <Link
-                            to="#"
-                            onClick={this.t_col1}
-                            className={
-                              this.state.col1
-                                ? "faq position-relative text-primary"
-                                : "faq position-relative text-dark"
-                            }
-                          >
-                            <CardHeader
-                              className="border-0 bg-light p-3"
-                              id="headingOne"
-                            >
-                              <h6 className="title mb-0">
-                                How does it work ?
-                                <i
-                                  className={
-                                    this.state.col1
-                                      ? "mdi mdi-chevron-up float-end"
-                                      : "mdi mdi-chevron-down float-end"
-                                  }
-                                ></i>
-                              </h6>
-                            </CardHeader>
-                          </Link>
-                          <Collapse isOpen={this.state.col1}>
-                            <CardBody>
-                              <p className="text-muted mb-0 faq-ans">
-                                There are many variations of passages of Lorem
-                                Ipsum available, but the majority have suffered
-                                alteration in some form.
-                              </p>
-                            </CardBody>
-                          </Collapse>
-                        </Card>
-
-                        <Card className="border-0 rounded mb-2">
-                          <Link
-                            to="#"
-                            onClick={this.t_col2}
-                            className={
-                              this.state.col2
-                                ? "faq position-relative text-primary"
-                                : "faq position-relative text-dark"
-                            }
-                          >
-                            <CardHeader
-                              className="border-0 bg-light p-3"
-                              id="headingTwo"
-                            >
-                              <h6 className="title mb-0">
-                                Do I need a designer to use Landrick ?
-                                <i
-                                  className={
-                                    this.state.col2
-                                      ? "mdi mdi-chevron-up float-end"
-                                      : "mdi mdi-chevron-down float-end"
-                                  }
-                                ></i>
-                              </h6>
-                            </CardHeader>
-                          </Link>
-                          <Collapse isOpen={this.state.col2}>
-                            <CardBody>
-                              <p className="text-muted mb-0 faq-ans">
-                                There are many variations of passages of Lorem
-                                Ipsum available, but the majority have suffered
-                                alteration in some form.
-                              </p>
-                            </CardBody>
-                          </Collapse>
-                        </Card>
-
-                        <Card className="border-0 rounded mb-2">
-                          <Link
-                            to="#"
-                            onClick={this.t_col3}
-                            className={
-                              this.state.col3
-                                ? "faq position-relative text-primary"
-                                : "faq position-relative text-dark"
-                            }
-                          >
-                            <CardHeader
-                              className="border-0 bg-light p-3"
-                              id="headingfive"
-                            >
-                              <h6 className="title mb-0">
-                                What do I need to do to start selling ?
-                                <i
-                                  className={
-                                    this.state.col3
-                                      ? "mdi mdi-chevron-up float-end"
-                                      : "mdi mdi-chevron-down float-end"
-                                  }
-                                ></i>
-                              </h6>
-                            </CardHeader>
-                          </Link>
-                          <Collapse isOpen={this.state.col3}>
-                            <CardBody>
-                              <p className="text-muted mb-0 faq-ans">
-                                There are many variations of passages of Lorem
-                                Ipsum available, but the majority have suffered
-                                alteration in some form.
-                              </p>
-                            </CardBody>
-                          </Collapse>
-                        </Card>
-
-                        <Card className="border-0 rounded mb-2">
-                          <Link
-                            to="#"
-                            onClick={this.t_col4}
-                            className={
-                              this.state.col4
-                                ? "faq position-relative text-primary"
-                                : "faq position-relative text-dark"
-                            }
-                          >
-                            <CardHeader
-                              className="border-0 bg-light p-3"
-                              id="headingfive"
-                            >
-                              <h6 className="title mb-0">
-                                What happens when I receive an order ?
-                                <i
-                                  className={
-                                    this.state.col4
-                                      ? "mdi mdi-chevron-up float-end"
-                                      : "mdi mdi-chevron-down float-end"
-                                  }
-                                ></i>
-                              </h6>
-                            </CardHeader>
-                          </Link>
-                          <Collapse isOpen={this.state.col4}>
-                            <CardBody>
-                              <p className="text-muted mb-0 faq-ans">
-                                There are many variations of passages of Lorem
-                                Ipsum available, but the majority have suffered
-                                alteration in some form.
-                              </p>
-                            </CardBody>
-                          </Collapse>
-                        </Card>                        
-                      </div>
-                    </div>
+                    <h5 className="card-title">Termination :</h5>
+                    <p className="text-muted">
+                      We reserve the right to terminate your access to our
+                      website at any time and for any reason, without notice.
+                    </p>
+                    <h5 className="card-title">
+                      Changes to Terms and Conditions :
+                    </h5>
+                    <p className="text-muted">
+                      We may update these terms and conditions from time to
+                      time. Any changes will be posted on our website, and your
+                      continued use of our website will be deemed acceptance of
+                      the updated terms and conditions.
+                    </p>
+                    <h5 className="card-title">Governing Law :</h5>
+                    <p className="text-muted">
+                      These terms and conditions are governed by and construed
+                      in accordance with the laws of Singapore. Any dispute
+                      arising out of or in connection with these terms and
+                      conditions will be subject to the exclusive jurisdiction
+                      of the courts of Singapore.
+                    </p>
                   </CardBody>
                 </Card>
               </Col>
             </Row>
           </Container>
         </section>
-        <Footer/>
+        <Footer />
       </React.Fragment>
     );
   }

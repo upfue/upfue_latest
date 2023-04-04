@@ -37,7 +37,6 @@ class PageContactThree extends Component {
 
   componentDidMount() {
     document.body.classList = '';
-    document.querySelector('.shoppingbtn').classList.add('btn-primary');
     window.addEventListener('scroll', this.scrollNavigation, true);
   }
 
@@ -55,8 +54,6 @@ class PageContactThree extends Component {
         navBar.classList.add('nav-sticky');
       } else {
         navBar.classList.remove('nav-sticky');
-        document.querySelector('.shoppingbtn').classList.add('btn-primary');
-        document.querySelector('.shoppingbtn').classList.remove('btn-light');
         document.querySelector('.settingbtn').classList.add('btn-soft-primary');
       }
     }
@@ -136,7 +133,7 @@ class PageContactThree extends Component {
                       onClick={this.callNumber}
                       className="read-more"
                     >
-                      +65 8889 0199
+                      +65 9231 3966
                     </Link>
                   </div>
                 </Card>
@@ -153,7 +150,7 @@ class PageContactThree extends Component {
                       Start working with Upfue that can provide everything
                     </p>
                     <Link to="#" onClick={this.sendMail} className="read-more">
-                      venitatan@upfue.com
+                      upfueadmin@icloud.com
                     </Link>
                   </div>
                 </Card>
@@ -173,7 +170,11 @@ class PageContactThree extends Component {
                       <br />
                       Singapore 329983
                     </p>
-                    <Link to="//goo.gl/maps/J2qQmpo1rkSSHLrQA" target={`_blank`} className="video-play-icon read-more lightbox">
+                    <Link
+                      to="//goo.gl/maps/J2qQmpo1rkSSHLrQA"
+                      target={`_blank`}
+                      className="video-play-icon read-more lightbox"
+                    >
                       View on Google map
                     </Link>
                   </div>

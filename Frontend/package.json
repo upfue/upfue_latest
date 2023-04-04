@@ -45,6 +45,7 @@
     "reactstrap": "^9.1.1",
     "simplebar-react": "^2.4.1",
     "slick-carousel": "^1.8.1",
+    "styled-components": "^5.3.9",
     "swiper": "^8.3.1",
     "tiny-slider": "^2.9.4",
     "web-vitals": "^2.1.4",
@@ -114,5 +115,5 @@
     "eslint-plugin-react": "^7.20.6",
     "prettier": "^2.1.1"
   },
-  "proxy":"http://localhost:5001"
+  "proxy": "http://localhost:5001"
 }

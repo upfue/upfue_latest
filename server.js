@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./db/connect.js";
 import "express-async-errors";
-import cors from "cors";
+import morgan from "morgan";
 
 //middleware
 import notFoundMiddleware from "./middlleware/not-found.js";
@@ -12,8 +12,10 @@ import blogRouter from "./routes/blogRoutes.js";
 const app = express();
 dotenv.config();
 
+if (process.env.NODE_ENV !== "production") {
+  app.use(morgan("dev"));
+}
 app.use(express.json());
-app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("welcome!");

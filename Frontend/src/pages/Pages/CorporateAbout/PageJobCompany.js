@@ -76,9 +76,21 @@ class PageJobCompany extends Component {
         },
         { title: 'UI/UX Designer', icon: 'hexagon', location: 'Singapore, SG' },
         { title: 'Graphic Designer', icon: 'figma', location: 'Singapore, SG' },
-        { title: 'Executive Assistant to Director', icon: 'crop', location: 'Singapore, SG' },
-        { title: 'Digital Content Creator', icon: 'crop', location: 'Singapore, SG' },
-        { title: 'IOS/Android Developer', icon: 'crop', location: 'Singapore, SG' },
+        {
+          title: 'Executive Assistant to Director',
+          icon: 'crop',
+          location: 'Singapore, SG',
+        },
+        {
+          title: 'Digital Content Creator',
+          icon: 'crop',
+          location: 'Singapore, SG',
+        },
+        {
+          title: 'IOS/Android Developer',
+          icon: 'crop',
+          location: 'Singapore, SG',
+        },
       ],
 
       companyDetailList: [
@@ -206,7 +218,7 @@ class PageJobCompany extends Component {
                   <Row>
                     {this.state.jobs.map((job, key) => (
                       <Col lg="6" key={key} className="mt-4 pt-2">
-                        <Link to="/page-job-detail" className="text-dark">
+                        <Link to="/job-details" className="text-dark">
                           <div className="key-feature d-flex align-items-center p-3 bg-white rounded shadow">
                             <div className="icon text-center rounded-circle me-3">
                               <i>
@@ -225,7 +237,7 @@ class PageJobCompany extends Component {
                       </Col>
                     ))}
                     <Col xs="12" className="mt-4 pt-2">
-                      <Link to="/job-list-one" className="btn btn-primary">
+                      <Link to="/job-list" className="btn btn-primary">
                         See All Jobs{' '}
                         <i className="uil uil-angle-right-b align-middle"></i>
                       </Link>

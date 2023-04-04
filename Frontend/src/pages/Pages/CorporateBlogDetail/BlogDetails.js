@@ -6,56 +6,41 @@ import { Col, Container, Row } from 'reactstrap';
 import FeatherIcon from 'feather-icons-react';
 
 //import images
-import blogBg from '../../../assets/images/blog/bg2.jpg';
-import client1 from '../../../assets/images/client/01.jpg';
-import client2 from '../../../assets/images/client/02.jpg';
-import client3 from '../../../assets/images/client/03.jpg';
-import blog1 from '../../../assets/images/blog/01.jpg';
-import blog2 from '../../../assets/images/blog/07.jpg';
-import blog3 from '../../../assets/images/blog/08.jpg';
+import Synthesia from '../../../assets/video/Synthesia.mp4';
+import JackMaImg from '../../../assets/images/blog/JackMa.png';
 
-class BlogDetails extends Component {
+class Blogdetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
       sideBarCateListData: [
-        {
-          title: 'Finance',
-          count: '13',
-        },
+        // {
+        //   title: 'Finance',
+        //   count: '13',
+        // },
         {
           title: 'Business',
-          count: 9,
+          count: 1,
         },
-        {
-          title: 'Blog',
-          count: 18,
-        },
-        {
-          title: 'Corporate',
-          count: 20,
-        },
-        {
-          title: 'Investment',
-          count: 22,
-        },
+        // {
+        //   title: 'Blog',
+        //   count: 18,
+        // },
+        // {
+        //   title: 'Corporate',
+        //   count: 20,
+        // },
+        // {
+        //   title: 'Investment',
+        //   count: 22,
+        // },
       ],
 
       recentPostData: [
         {
-          img: blog2,
-          title: 'Consultant Business',
-          date: '15th June, 2019',
-        },
-        {
-          img: blog3,
-          title: 'Look On The Glorious Balance',
-          date: '15th June, 2019',
-        },
-        {
-          img: blog1,
-          title: 'Research Financial',
-          date: '15th June, 2019',
+          img: JackMaImg,
+          title: 'JackMa',
+          date: '28 March 2023',
         },
       ],
 
@@ -73,13 +58,10 @@ class BlogDetails extends Component {
       ],
 
       iconListData: [
-        { icon: 'facebook' },
-        { icon: 'instagram' },
-        { icon: 'twitter' },
-        { icon: 'linkedin' },
-        { icon: 'github' },
-        { icon: 'youtube' },
-        { icon: 'gitlab' },
+        { icon: 'facebook', link: '//www.facebook.com/upfuesg' },
+        { icon: 'instagram', link: '//www.instagram.com/upfuesg/' },
+        // { icon: 'twitter' },
+        { icon: 'linkedin', link: '//www.linkedin.com/company/upfue/' },
       ],
     };
   }
@@ -91,270 +73,46 @@ class BlogDetails extends Component {
             <Row>
               <Col lg={8} md={6}>
                 <div className="me-lg-5">
-                  <p className="text-muted">
-                    This is required when, for example, the final text is not
-                    yet available. Dummy text is also known as 'fill text'. It
-                    is said that song composers of the past used dummy texts as
-                    lyrics when writing melodies in order to have a 'ready-made'
-                    text to sing with the melody.
-                  </p>
+                  <p className="text-muted"></p>
 
                   <ul className="list-unstyled d-flex justify-content-between mt-4">
                     <li className="list-inline-item user me-2">
                       <Link to="#" className="text-muted">
-                        <i className="uil uil-user text-dark"></i> Calvin Carlo
+                        <i className="uil uil-user text-dark"></i> Emily Leong
                       </Link>
                     </li>
                     <li className="list-inline-item date text-muted">
-                      <i className="uil uil-calendar-alt text-dark"></i> 25th
-                      June 2021
+                      <i className="uil uil-calendar-alt text-dark">
+                        &nbsp;29 March 2023
+                      </i>
                     </li>
                   </ul>
 
-                  <img
-                    src={blogBg}
+                  <video
+                    src={Synthesia}
                     className="img-fluid rounded-md shadow"
+                    controls
+                    autoPlay
+                    loop
                     alt=""
                   />
 
                   <h5 className="mt-4">
-                    Mornings contain the secret to an extraordinarily successful
-                    life
+                    Synthesia, #1 rated AI video creation platform.
                   </h5>
 
                   <p className="text-muted">
-                    Due to its widespread use as filler text for layouts,
-                    non-readability is of great importance: human perception is
-                    tuned to recognize certain patterns and repetitions in
-                    texts. If the distribution of letters and 'words' is random,
-                    the reader will not be distracted from making a neutral
-                    judgement on the visual impact and readability of the
-                    typefaces (typography), or the distribution of text on the
-                    page (layout or type area).
+                    Synthesia.io is a cutting-edge AI video creation tool that
+                    can transform text into high-quality videos in just a matter
+                    of minutes. With a broad selection of AI avatars and
+                    voiceovers available in over 100 languages, users can
+                    produce visually stunning explainer videos without resorting
+                    to traditional video production techniques. This makes it an
+                    outstanding and cost-effective choice for businesses and
+                    individuals looking for an alternative to hiring a video
+                    production team.
                   </p>
-
-                  <h5 className="mt-4">Comments :</h5>
-
-                  <ul className="media-list list-unstyled mb-0">
-                    <li className="mt-4">
-                      <div className="d-flex justify-content-between">
-                        <div className="d-flex align-items-center">
-                          <Link className="pe-3" to="#">
-                            <img
-                              src={client1}
-                              className="img-fluid avatar avatar-md-sm rounded-circle shadow"
-                              alt="img"
-                            />
-                          </Link>
-                          <div className="flex-1 commentor-detail">
-                            <h6 className="mb-0">
-                              <Link to="#" className="text-dark media-heading">
-                                Lorenzo Peterson
-                              </Link>
-                            </h6>
-                            <small className="text-muted">
-                              15th August, 2019 at 01:25 pm
-                            </small>
-                          </div>
-                        </div>
-                        <Link to="#" className="text-muted">
-                          <i className="mdi mdi-reply"></i> Reply
-                        </Link>
-                      </div>
-                      <div className="mt-3">
-                        <p className="text-muted fst-italic p-3 bg-light rounded">
-                          " There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form, by injected humour "
-                        </p>
-                      </div>
-                    </li>
-
-                    <li className="mt-4">
-                      <div className="d-flex justify-content-between">
-                        <div className="d-flex align-items-center">
-                          <Link className="pe-3" to="#">
-                            <img
-                              src={client2}
-                              className="img-fluid avatar avatar-md-sm rounded-circle shadow"
-                              alt="img"
-                            />
-                          </Link>
-                          <div className="flex-1 commentor-detail">
-                            <h6 className="mb-0">
-                              <Link to="#" className="media-heading text-dark">
-                                Tammy Camacho
-                              </Link>
-                            </h6>
-                            <small className="text-muted">
-                              15th August, 2019 at 05:44 pm
-                            </small>
-                          </div>
-                        </div>
-                        <Link to="#" className="text-muted">
-                          <i className="mdi mdi-reply"></i> Reply
-                        </Link>
-                      </div>
-                      <div className="mt-3">
-                        <p className="text-muted fst-italic p-3 bg-light rounded">
-                          " There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form, by injected humour "
-                        </p>
-                      </div>
-                    </li>
-
-                    <li className="mt-4">
-                      <div className="d-flex justify-content-between">
-                        <div className="d-flex align-items-center">
-                          <Link className="pe-3" to="#">
-                            <img
-                              src={client3}
-                              className="img-fluid avatar avatar-md-sm rounded-circle shadow"
-                              alt="img"
-                            />
-                          </Link>
-                          <div className="flex-1 commentor-detail">
-                            <h6 className="mb-0">
-                              <Link to="#" className="media-heading text-dark">
-                                Tammy Camacho
-                              </Link>
-                            </h6>
-                            <small className="text-muted">
-                              16th August, 2019 at 03:44 pm
-                            </small>
-                          </div>
-                        </div>
-                        <Link to="#" className="text-muted">
-                          <i className="mdi mdi-reply"></i> Reply
-                        </Link>
-                      </div>
-                      <div className="mt-3">
-                        <p className="text-muted fst-italic p-3 bg-light rounded">
-                          " There are many variations of passages of Lorem Ipsum
-                          available, but the majority have suffered alteration
-                          in some form, by injected humour "
-                        </p>
-                      </div>
-
-                      <ul className="list-unstyled ps-4 ps-md-5 sub-comment">
-                        <li className="mt-4">
-                          <div className="d-flex justify-content-between">
-                            <div className="d-flex align-items-center">
-                              <Link className="pe-3" to="#">
-                                <img
-                                  src={client1}
-                                  className="img-fluid avatar avatar-md-sm rounded-circle shadow"
-                                  alt="img"
-                                />
-                              </Link>
-                              <div className="flex-1 commentor-detail">
-                                <h6 className="mb-0">
-                                  <Link
-                                    to="#"
-                                    className="text-dark media-heading"
-                                  >
-                                    Lorenzo Peterson
-                                  </Link>
-                                </h6>
-                                <small className="text-muted">
-                                  17th August, 2019 at 01:25 pm
-                                </small>
-                              </div>
-                            </div>
-                            <Link to="#" className="text-muted">
-                              <i className="mdi mdi-reply"></i> Reply
-                            </Link>
-                          </div>
-                          <div className="mt-3">
-                            <p className="text-muted fst-italic p-3 bg-light rounded">
-                              " There are many variations of passages of Lorem
-                              Ipsum available, but the majority have suffered
-                              alteration in some form, by injected humour "
-                            </p>
-                          </div>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-
-                  <h5 className="mt-4">Leave A Comment :</h5>
-
-                  <form className="mt-3">
-                    <div className="row">
-                      <div className="col-md-12">
-                        <div className="mb-3">
-                          <label className="form-label">Your Comment</label>
-                          <div className="form-icon position-relative">
-                            <FeatherIcon
-                              icon="message-circle"
-                              className="fea icon-sm icons"
-                            />
-                            <textarea
-                              id="message"
-                              placeholder="Your Comment"
-                              rows="5"
-                              name="message"
-                              className="form-control ps-5"
-                              required=""
-                            ></textarea>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="mb-3">
-                          <label className="form-label">
-                            Name <span className="text-danger">*</span>
-                          </label>
-                          <div className="form-icon position-relative">
-                            <FeatherIcon
-                              icon="user"
-                              className="fea icon-sm icons"
-                            />
-                            <input
-                              id="name2"
-                              name="name"
-                              type="text"
-                              placeholder="Name"
-                              className="form-control ps-5"
-                              required=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="mb-3">
-                          <label className="form-label">
-                            Your Email <span className="text-danger">*</span>
-                          </label>
-                          <div className="form-icon position-relative">
-                            <FeatherIcon
-                              icon="mail"
-                              className="fea icon-sm icons"
-                            />
-                            <input
-                              id="email2"
-                              type="email"
-                              placeholder="Email"
-                              name="email"
-                              className="form-control ps-5"
-                              required=""
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col-md-12">
-                        <div className="send d-grid">
-                          <button type="submit" className="btn btn-primary">
-                            Send Message
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
+                  <a>#AI&nbsp;</a>
                 </div>
               </Col>
 
@@ -424,16 +182,36 @@ class BlogDetails extends Component {
                     <div className="widget mb-4 pb-2">
                       <h5 className="widget-title">Tags Cloud</h5>
                       <div className="tagcloud mt-4">
-                        <Link to="#" className="rounded">Business</Link>{" "}
-                        <Link to="#" className="rounded">Finance</Link>{" "}
-                        <Link to="#" className="rounded">Marketing</Link>{" "}
-                        <Link to="#" className="rounded">Fashion</Link>{" "}
-                        <Link to="#" className="rounded">Bride</Link>{" "}
-                        <Link to="#" className="rounded">Lifestyle</Link>{" "}
-                        <Link to="#" className="rounded">Travel</Link>{" "}
-                        <Link to="#" className="rounded">Beauty</Link>{" "}
-                        <Link to="#" className="rounded">Video</Link>{" "}
-                        <Link to="#" className="rounded">Audio</Link>
+                        <Link to="#" className="rounded">
+                          Business
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Finance
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Marketing
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Fashion
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Bride
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Lifestyle
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Travel
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Beauty
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Video
+                        </Link>{' '}
+                        <Link to="#" className="rounded">
+                          Audio
+                        </Link>
                       </div>
                     </div>
 
@@ -442,7 +220,11 @@ class BlogDetails extends Component {
                       <ul className="list-unstyled social-icon social mb-0 mt-4">
                         {this.state.iconListData.map((item, key) => (
                           <li key={key} className="list-inline-item me-1">
-                            <Link to="#" className="rounded">
+                            <Link
+                              target={'_blank'}
+                              to={item.link}
+                              className="rounded"
+                            >
                               <FeatherIcon
                                 icon={item.icon}
                                 className="fea icon-sm fea-social"
@@ -463,4 +245,4 @@ class BlogDetails extends Component {
   }
 }
 
-export default BlogDetails;
+export default Blogdetails;
