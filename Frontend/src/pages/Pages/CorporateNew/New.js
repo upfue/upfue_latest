@@ -5,6 +5,7 @@ import { Card, Col, Container, Row, CardBody } from 'reactstrap';
 //import images
 import JackMa from '../../../assets/images/blog/JackMa.png';
 import Alibaba from '../../../assets/images/Alibaba.jpg';
+import ChatGPT from '../../../assets/images/ChatGPT.jpg';
 
 class New extends Component {
   constructor(props) {
@@ -28,6 +29,15 @@ class New extends Component {
           title:
             'Alibaba to be splitted into 6 groups and explore IPOs to depart from Jack Ma era',
           date: '31 March 2023',
+        },
+        {
+          id: 3,
+          img: ChatGPT,
+          link: '/news-details-2',
+          badge: 'Business',
+          title:
+            'Quiet revolution of “boring AI”, taking over the golden era of ChatGPT',
+          date: ' 4 April 2023',
         },
       ],
     };

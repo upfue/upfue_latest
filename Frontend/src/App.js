@@ -4,6 +4,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 // Import Css
 import './assets/css/materialdesignicons.min.css';
 import './Apps.scss';
+import './index.css';
 import CorporateBusiness from './pages/CorporateBusiness';
 import ErrorPage from './pages/Pages/CorporateError';
 import CorporateServices from './pages/Pages/CorporateServices';
@@ -31,6 +32,7 @@ import CorporateNewDetailOne from './pages/Pages/CorporateNewDetail1';
 import CorporateBlogDetailThree from './pages/Pages/CorporateBlogDetail3';
 import { Blog, New, Stats, SharedLayout } from './pages/CorporateBackend';
 import ProtectRoutes from './pages/Pages/ProtectRoutes';
+import CorporateNewDetailTwo from './pages/Pages/CorporateNewDetail2';
 
 // import "./assets/css/colors/default.css";
 class App extends Component {
@@ -56,6 +58,7 @@ class App extends Component {
             <Route path="/news" element={<CorporateNew />} />
             <Route path="/news-details" element={<CorporateNewDetail />} />
             <Route path="/news-details-1" element={<CorporateNewDetailOne />} />
+            <Route path="/news-details-2" element={<CorporateNewDetailTwo />} />
             <Route path="/blog-details" element={<CorporateBlogDetail />} />
             <Route
               path="/blog-details-1"

@@ -46,45 +46,45 @@ class ReviewsSlider extends Component {
                   {this.state.step1 === true
                     ? this.props.reviews.map((review, key) =>
                       key >= 0 && key <= 2 ? (
-                          <Col
-                            key={key}
-                            md={this.state.cols}
-                            className="mb-1"
+                        <Col
+                          key={key}
+                          md={this.state.cols}
+                          className="mb-1 d-flex"
+                        >
+                          <div
+                            className="d-flex client-testi"
+                            name="clientsreview"
                           >
+                            <img
+                              src={review.img}
+                              style={{ height: 65, width: 65 }}
+                              className="avatar avatar-small client-image rounded shadow"
+                              alt=""
+                            />
                             <div
-                              className="d-flex client-testi"
-                              name="clientsreview"
+                              className="flex-1 content p-3 shadow rounded bg-white position-relative"
                             >
-                              <img
-                                src={review.img}
-                                style={{ height: 65, width: 65 }}
-                                className="avatar avatar-small client-image rounded shadow"
-                                alt=""
+                              <StarRatings
+                                items={3}
+                                rating={review.rating}
+                                starRatedColor="#F17425"
+                                numberOfStars={5}
+                                name="rating"
+                                starDimension="15px"
+                                starSpacing="3px"
                               />
-                              <div
-                                className="flex-1 content p-3 shadow rounded bg-white position-relative"
-                              >
-                                <StarRatings
-                                  items={3}
-                                  rating={review.rating}
-                                  starRatedColor="#F17425"
-                                  numberOfStars={5}
-                                  name="rating"
-                                  starDimension="15px"
-                                  starSpacing="3px"
-                                />
-                                <p className="text-muted mt-2">
-                                  " {review.desc} "
-                                </p>
-                                <h6 className="text-primary">
-                                  - {review.name}{" "}
-                                  <small className="text-muted">
-                                    {review.post}
-                                  </small>
-                                </h6>
-                              </div>
+                              <p className="text-muted mt-2">
+                                " {review.desc} "
+                              </p>
+                              <h6 className="text-primary">
+                                - {review.name}{" "}
+                                <small className="text-muted">
+                                  {review.post}
+                                </small>
+                              </h6>
                             </div>
-                          </Col>                      
+                          </div>
+                        </Col>
                       ) : null
                     )
                     : this.props.reviews.map((review, key) =>
@@ -92,7 +92,7 @@ class ReviewsSlider extends Component {
                         <Col
                           key={key}
                           md={this.state.cols}
-                          className="mb-1"
+                          className="mb-1 d-flex"
                         >
                           <div
                             className="d-flex client-testi"

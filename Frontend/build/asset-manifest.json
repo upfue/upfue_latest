@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.150e8552.chunk.css",
-    "main.js": "/static/js/main.1b3d5356.chunk.js",
-    "main.js.map": "/static/js/main.1b3d5356.chunk.js.map",
+    "main.css": "/static/css/main.f92d1c47.chunk.css",
+    "main.js": "/static/js/main.b2d0a0b4.chunk.js",
+    "main.js.map": "/static/js/main.b2d0a0b4.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c7e3eabc.js",
     "runtime-main.js.map": "/static/js/runtime-main.c7e3eabc.js.map",
     "static/css/2.b2377fe4.chunk.css": "/static/css/2.b2377fe4.chunk.css",
-    "static/js/2.5a3f4dca.chunk.js": "/static/js/2.5a3f4dca.chunk.js",
-    "static/js/2.5a3f4dca.chunk.js.map": "/static/js/2.5a3f4dca.chunk.js.map",
+    "static/js/2.c313301c.chunk.js": "/static/js/2.c313301c.chunk.js",
+    "static/js/2.c313301c.chunk.js.map": "/static/js/2.c313301c.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.b2377fe4.chunk.css.map": "/static/css/2.b2377fe4.chunk.css.map",
-    "static/css/main.150e8552.chunk.css.map": "/static/css/main.150e8552.chunk.css.map",
-    "static/js/2.5a3f4dca.chunk.js.LICENSE.txt": "/static/js/2.5a3f4dca.chunk.js.LICENSE.txt",
+    "static/css/main.f92d1c47.chunk.css.map": "/static/css/main.f92d1c47.chunk.css.map",
+    "static/js/2.c313301c.chunk.js.LICENSE.txt": "/static/js/2.c313301c.chunk.js.LICENSE.txt",
     "static/media/01.b9644bef.jpg": "/static/media/01.b9644bef.jpg",
     "static/media/02.b8dd5b2c.jpg": "/static/media/02.b8dd5b2c.jpg",
     "static/media/03.67739081.jpg": "/static/media/03.67739081.jpg",
@@ -43,6 +43,7 @@
     "static/media/Alibaba.4f612ba0.jpg": "/static/media/Alibaba.4f612ba0.jpg",
     "static/media/Appdynamics.4cbd4848.svg": "/static/media/Appdynamics.4cbd4848.svg",
     "static/media/C.84da5405.jpg": "/static/media/C.84da5405.jpg",
+    "static/media/ChatGPT.0e1424a7.jpg": "/static/media/ChatGPT.0e1424a7.jpg",
     "static/media/Circleci.21dabe0d.svg": "/static/media/Circleci.21dabe0d.svg",
     "static/media/Codepen.34544ba7.svg": "/static/media/Codepen.34544ba7.svg",
     "static/media/Discord.cf175fca.svg": "/static/media/Discord.cf175fca.svg",
@@ -99,8 +100,8 @@
   "entrypoints": [
     "static/js/runtime-main.c7e3eabc.js",
     "static/css/2.b2377fe4.chunk.css",
-    "static/js/2.5a3f4dca.chunk.js",
-    "static/css/main.150e8552.chunk.css",
-    "static/js/main.1b3d5356.chunk.js"
+    "static/js/2.c313301c.chunk.js",
+    "static/css/main.f92d1c47.chunk.css",
+    "static/js/main.b2d0a0b4.chunk.js"
   ]
 }

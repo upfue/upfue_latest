@@ -15,5 +15,5 @@ root.render(
         <App />
       </AppProvider>
     </React.Fragment>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
