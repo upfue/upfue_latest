@@ -38,12 +38,22 @@ const login = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  try {
-    const user = await User.create(req.body);
-    res.status(201).json({ user });
-  } catch (error) {
-    res.status(500).json({ msg: `There was an error!` });
+  const { email, name, lastname, password } = req.body;
+  if (!email || !name || !lastname || !password) {
+    throw new BadRequestError("Please provide all values");
   }
+  const user = await User.findOne({ _id: req.user.userId });
+  user.email = email;
+  user.name = name;
+  user.lastname = lastname;
+  user.password = password;
+  await user.save();
+
+  const token = user.createJWT();
+  res.status(StatusCodes.OK).json({
+    user: { email: user.email, name: user.name, lastname: user.lastName },
+    token,
+  });
 };
 
 export { register, login, updateUser };

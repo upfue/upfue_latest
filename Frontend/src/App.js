@@ -33,6 +33,7 @@ import CorporateBlogDetailThree from './pages/Pages/CorporateBlogDetail3';
 import { Blog, New, Stats, SharedLayout } from './pages/CorporateBackend';
 import ProtectRoutes from './pages/Pages/ProtectRoutes';
 import CorporateNewDetailTwo from './pages/Pages/CorporateNewDetail2';
+import Profile from './pages/CorporateBackend/Profile';
 
 // import "./assets/css/colors/default.css";
 class App extends Component {
@@ -87,6 +88,7 @@ class App extends Component {
               <Route index element={<Stats />} />
               <Route path="news" element={<New />} />
               <Route path="blogs" element={<Blog />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
           </Routes>
         </BrowserRouter>
