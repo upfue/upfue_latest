@@ -8,18 +8,17 @@ const Profile = () => {
     useAppContext();
   const [name, setName] = useState(user?.name);
   const [email, setEmail] = useState(user?.email);
-  const [lastName, setLastName] = useState(user?.lastName);
+  const [lastname, setLastName] = useState(user?.lastname);
   const [password, setPassword] = useState(user?.password);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !email || !lastName || !password) {
-      // test and remove temporary
+    if (!name || !email || !lastname || !password) {
       displayAlert();
       return;
     }
 
-    updateUser({ name, email, lastName, password });
+    updateUser({ name, email, lastname, password });
   };
   return (
     <Wrapper>
@@ -30,19 +29,21 @@ const Profile = () => {
         {/* name */}
         <div className="form-center">
           <FormRow
+            icon="user"
             type="text"
             name="name"
             value={name}
             handleChange={(e) => setName(e.target.value)}
           />
           <FormRow
-            labelText="last name"
+            icon="user"
             type="text"
-            name="lastName"
-            value={lastName}
+            name="lastname"
+            value={lastname}
             handleChange={(e) => setLastName(e.target.value)}
           />
           <FormRow
+            icon="user"
             type="email"
             name="email"
             value={email}
@@ -50,6 +51,7 @@ const Profile = () => {
           />
 
           <FormRow
+            icon="user"
             type="password"
             name="password"
             value={password}

@@ -7,12 +7,8 @@ import FeatherIcon from 'feather-icons-react';
 
 //import images
 import JackMa from '../../../assets/video/JackMa.mp4';
-import client1 from '../../../assets/images/client/01.jpg';
-import client2 from '../../../assets/images/client/02.jpg';
-import client3 from '../../../assets/images/client/03.jpg';
 import JackMaImg from '../../../assets/images/blog/JackMa.png';
-import blog2 from '../../../assets/images/blog/07.jpg';
-import blog3 from '../../../assets/images/blog/08.jpg';
+
 
 class Newdetails extends Component {
   constructor(props) {

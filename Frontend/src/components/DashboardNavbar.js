@@ -25,7 +25,9 @@ const DashboardNavbar = () => {
             onClick={() => setShowLogout(!showLogout)}
           >
             <FaUserCircle />
+            &nbsp;
             {user?.name}
+            &nbsp;
             <FaCaretDown />
           </button>
           <div className={showLogout ? 'dropdown show-dropdown' : 'dropdown'}>

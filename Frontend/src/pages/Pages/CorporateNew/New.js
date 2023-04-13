@@ -6,6 +6,10 @@ import { Card, Col, Container, Row, CardBody } from 'reactstrap';
 import JackMa from '../../../assets/images/blog/JackMa.png';
 import Alibaba from '../../../assets/images/Alibaba.jpg';
 import ChatGPT from '../../../assets/images/ChatGPT.jpg';
+import Lazada from '../../../assets/images/Lazada.png';
+import Eton from '../../../assets/images/Eton.png';
+import Tongyi from '../../../assets/images/Tongyi.png';
+import Laz from '../../../assets/images/Laz.png';
 
 class New extends Component {
   constructor(props) {
@@ -38,6 +42,40 @@ class New extends Component {
           title:
             'Quiet revolution of “boring AI”, taking over the golden era of ChatGPT',
           date: ' 4 April 2023',
+        },
+        {
+          id: 4,
+          img: Lazada,
+          link: '/news-details-3',
+          badge: 'Business',
+          title:
+            'Lazada, a subsidiary of Alibaba, is gearing up to enter the European market and compete with Amazon and Zalando            ',
+          date: ' 6 April 2023',
+        },
+        {
+          id: 5,
+          img: Eton,
+          link: '/news-details-4',
+          badge: 'Business',
+          title:
+            'Eton Solutions has announced plans to establish its global headquarters in Singapore.          ',
+          date: '11 April 2023',
+        },
+        {
+          id: 5,
+          img: Tongyi,
+          link: '/news-details-5',
+          badge: 'Business',
+          title: 'Tongyi Qianwen, ChatGPT’s rival',
+          date: '11 April 2023',
+        },
+        {
+          id: 5,
+          img: Laz,
+          link: '/news-details-6',
+          badge: 'Business',
+          title: 'Lazada can benefit from Alibaba’s restructuring',
+          date: '12 April 2023',
         },
       ],
     };

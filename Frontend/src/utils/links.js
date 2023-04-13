@@ -13,18 +13,36 @@ const links = [
   },
   {
     id: 2,
-    text: 'Blogs',
+    text: 'Create Blogs',
     path: 'blogs',
     icon: <MdQueryStats />,
   },
   {
     id: 3,
-    text: 'News',
+    text: 'Create News',
     path: 'news',
     icon: <FaWpforms />,
   },
   {
     id: 4,
+    text: 'Create Job Positions',
+    path: 'job-position',
+    icon: <FaWpforms />,
+  },
+  {
+    id: 5,
+    text: 'Upload Gallery',
+    path: 'gallery',
+    icon: <FaWpforms />,
+  },
+  {
+    id: 5,
+    text: 'All Jobs',
+    path: 'all-jobs',
+    icon: <FaWpforms />,
+  },
+  {
+    id: 7,
     text: 'profile',
     path: 'profile',
     icon: <ImProfile />,

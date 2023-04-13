@@ -9,7 +9,10 @@ import notFoundMiddleware from "./middlleware/not-found.js";
 import errorHandlerMiddleware from "./middlleware/error-handler.js";
 import authRouter from "./routes/authRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
+import authenticateUser from "./middlleware/auth.js";
+import cors from "cors";
 const app = express();
+app.use(cors);
 dotenv.config();
 
 if (process.env.NODE_ENV !== "production") {
@@ -22,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/blog", blogRouter);
+app.use("/api/v1/blog", authenticateUser, blogRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

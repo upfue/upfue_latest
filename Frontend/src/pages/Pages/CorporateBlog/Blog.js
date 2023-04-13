@@ -7,6 +7,9 @@ import Syntehsia from '../../../assets/images/blog/Synthesia.png';
 import GoCharlie from '../../../assets/images/blog/GoCharlie.png';
 import Fliki from '../../../assets/images/blog/Fliki.png';
 import InVideo from '../../../assets/images/blog/InVideo.png';
+import Descript from '../../../assets/images/blog/Descript.png';
+import DallE from '../../../assets/images/blog/DallE.png';
+import Zyro from '../../../assets/images/blog/Zyro.png';
 
 class Blog extends Component {
   constructor(props) {
@@ -45,6 +48,31 @@ class Blog extends Component {
           title: 'InVideo, turning a script into a video',
           date: '3 April 2023',
         },
+        {
+          id: 5,
+          img: Descript,
+          link: '/blog-details-4',
+          badge: 'AI',
+          title: 'Descript, edit videos as easy as using docs or slides',
+          date: '5 April 2023',
+        },
+        {
+          id: 6,
+          img: DallE,
+          link: '/blog-details-5',
+          badge: 'AI',
+          title: 'DALL·E 2,  the newest AI model by OpenAI',
+          date: '8 April 2023',
+        },
+        {
+          id: 7,
+          img: Zyro,
+          link: '/blog-details-6',
+          badge: 'AI',
+          title: 'Zyro, feature-rich website builder',
+          date: '10 April 2023',
+        },
+        
       ],
     };
   }

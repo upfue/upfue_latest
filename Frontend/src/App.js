@@ -34,6 +34,16 @@ import { Blog, New, Stats, SharedLayout } from './pages/CorporateBackend';
 import ProtectRoutes from './pages/Pages/ProtectRoutes';
 import CorporateNewDetailTwo from './pages/Pages/CorporateNewDetail2';
 import Profile from './pages/CorporateBackend/Profile';
+import CorporateBlogDetailFour from './pages/Pages/CorporateBlogDetail4';
+import CorporateNewDetailThree from './pages/Pages/CorporateNewDetail3';
+import CorporateBlogDetailFive from './pages/Pages/CorporateBlogDetail5';
+import CorporateBlogDetailSix from './pages/Pages/CorporateBlogDetail6';
+import CorporateNewDetailFour from './pages/Pages/CorporateNewDetail4';
+import JobPosition from './pages/CorporateBackend/JobPosition';
+import Gallery from './pages/CorporateBackend/Gallery';
+import CorporateNewDetailFive from './pages/Pages/CorporateNewDetail5';
+import CorporateNewDetailSix from './pages/Pages/CorporateNewDetail6';
+import AllJobs from './pages/CorporateBackend/AllJobs';
 
 // import "./assets/css/colors/default.css";
 class App extends Component {
@@ -60,6 +70,20 @@ class App extends Component {
             <Route path="/news-details" element={<CorporateNewDetail />} />
             <Route path="/news-details-1" element={<CorporateNewDetailOne />} />
             <Route path="/news-details-2" element={<CorporateNewDetailTwo />} />
+            <Route
+              path="/news-details-3"
+              element={<CorporateNewDetailThree />}
+            />
+            <Route
+              path="/news-details-4"
+              element={<CorporateNewDetailFour />}
+            />
+            <Route
+              path="/news-details-5"
+              element={<CorporateNewDetailFive />}
+            />
+            <Route path="/news-details-6" element={<CorporateNewDetailSix />} />
+            {/* Blogs */}
             <Route path="/blog-details" element={<CorporateBlogDetail />} />
             <Route
               path="/blog-details-1"
@@ -72,6 +96,18 @@ class App extends Component {
             <Route
               path="/blog-details-3"
               element={<CorporateBlogDetailThree />}
+            />
+            <Route
+              path="/blog-details-4"
+              element={<CorporateBlogDetailFour />}
+            />
+            <Route
+              path="/blog-details-5"
+              element={<CorporateBlogDetailFive />}
+            />
+            <Route
+              path="/blog-details-6"
+              element={<CorporateBlogDetailSix />}
             />
             <Route path="/terms-conditions" element={<Terms />} />
             <Route path="/privacy-policy" element={<Privacy />} />
@@ -88,7 +124,10 @@ class App extends Component {
               <Route index element={<Stats />} />
               <Route path="news" element={<New />} />
               <Route path="blogs" element={<Blog />} />
+              <Route path="gallery" element={<Gallery />} />
+              <Route path="job-position" element={<JobPosition />} />
               <Route path="profile" element={<Profile />} />
+              <Route path="all-jobs" element={<AllJobs />} />
             </Route>
           </Routes>
         </BrowserRouter>
