@@ -10,6 +10,8 @@ import InVideo from '../../../assets/images/blog/InVideo.png';
 import Descript from '../../../assets/images/blog/Descript.png';
 import DallE from '../../../assets/images/blog/DallE.png';
 import Zyro from '../../../assets/images/blog/Zyro.png';
+import Artbreeder from '../../../assets/images/blog/Artbreeder.png';
+import Wombo from '../../../assets/images/blog/Wombo.png';
 
 class Blog extends Component {
   constructor(props) {
@@ -72,7 +74,22 @@ class Blog extends Component {
           title: 'Zyro, feature-rich website builder',
           date: '10 April 2023',
         },
-        
+        {
+          id: 8,
+          img: Wombo,
+          link: '/blog-details-7',
+          badge: 'AI',
+          title: 'Dream by WOMBO, best AI art generator for phone',
+          date: '13 April 2023',
+        },
+        {
+          id: 9,
+          img: Artbreeder,
+          link: '/blog-details-8',
+          badge: 'AI',
+          title: 'Artbreeder, Automatic Art Generator',
+          date: '14 April 2023',
+        },
       ],
     };
   }

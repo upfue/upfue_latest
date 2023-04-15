@@ -44,6 +44,9 @@ import Gallery from './pages/CorporateBackend/Gallery';
 import CorporateNewDetailFive from './pages/Pages/CorporateNewDetail5';
 import CorporateNewDetailSix from './pages/Pages/CorporateNewDetail6';
 import AllJobs from './pages/CorporateBackend/AllJobs';
+import CorporateBlogDetail7 from './pages/Pages/CorporateBlogDetail7';
+import CorporateBlogDetail8 from './pages/Pages/CorporateBlogDetail8';
+import CorporateNewDetail7 from './pages/Pages/CorporateNewDetail7';
 
 // import "./assets/css/colors/default.css";
 class App extends Component {
@@ -83,6 +86,7 @@ class App extends Component {
               element={<CorporateNewDetailFive />}
             />
             <Route path="/news-details-6" element={<CorporateNewDetailSix />} />
+            <Route path="/news-details-7" element={<CorporateNewDetail7 />} />
             {/* Blogs */}
             <Route path="/blog-details" element={<CorporateBlogDetail />} />
             <Route
@@ -109,6 +113,8 @@ class App extends Component {
               path="/blog-details-6"
               element={<CorporateBlogDetailSix />}
             />
+            <Route path="/blog-details-7" element={<CorporateBlogDetail7 />} />
+            <Route path="/blog-details-8" element={<CorporateBlogDetail8 />} />
             <Route path="/terms-conditions" element={<Terms />} />
             <Route path="/privacy-policy" element={<Privacy />} />
             <Route path="/admin" element={<PageLogin />} />

@@ -1,17 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.3f00f6ad.chunk.css",
-    "main.js": "/static/js/main.f86a80fe.chunk.js",
-    "main.js.map": "/static/js/main.f86a80fe.chunk.js.map",
+    "main.css": "/static/css/main.ec769175.chunk.css",
+    "main.js": "/static/js/main.ee579b79.chunk.js",
     "runtime-main.js": "/static/js/runtime-main.c7e3eabc.js",
-    "runtime-main.js.map": "/static/js/runtime-main.c7e3eabc.js.map",
-    "static/css/2.9733fa82.chunk.css": "/static/css/2.9733fa82.chunk.css",
-    "static/js/2.c96d2a65.chunk.js": "/static/js/2.c96d2a65.chunk.js",
-    "static/js/2.c96d2a65.chunk.js.map": "/static/js/2.c96d2a65.chunk.js.map",
+    "static/css/2.11895fed.chunk.css": "/static/css/2.11895fed.chunk.css",
+    "static/js/2.0ad94e4b.chunk.js": "/static/js/2.0ad94e4b.chunk.js",
     "index.html": "/index.html",
-    "static/css/2.9733fa82.chunk.css.map": "/static/css/2.9733fa82.chunk.css.map",
-    "static/css/main.3f00f6ad.chunk.css.map": "/static/css/main.3f00f6ad.chunk.css.map",
-    "static/js/2.c96d2a65.chunk.js.LICENSE.txt": "/static/js/2.c96d2a65.chunk.js.LICENSE.txt",
+    "static/js/2.0ad94e4b.chunk.js.LICENSE.txt": "/static/js/2.0ad94e4b.chunk.js.LICENSE.txt",
     "static/media/01.b9644bef.jpg": "/static/media/01.b9644bef.jpg",
     "static/media/02.b8dd5b2c.jpg": "/static/media/02.b8dd5b2c.jpg",
     "static/media/03.67739081.jpg": "/static/media/03.67739081.jpg",
@@ -40,6 +35,7 @@
     "static/media/About.8317d773.jpg": "/static/media/About.8317d773.jpg",
     "static/media/Alibaba.4f612ba0.jpg": "/static/media/Alibaba.4f612ba0.jpg",
     "static/media/Appdynamics.4cbd4848.svg": "/static/media/Appdynamics.4cbd4848.svg",
+    "static/media/Artbreeder.d9e461e5.png": "/static/media/Artbreeder.d9e461e5.png",
     "static/media/C.84da5405.jpg": "/static/media/C.84da5405.jpg",
     "static/media/ChatGPT.0e1424a7.jpg": "/static/media/ChatGPT.0e1424a7.jpg",
     "static/media/Circleci.21dabe0d.svg": "/static/media/Circleci.21dabe0d.svg",
@@ -49,6 +45,7 @@
     "static/media/Discord.cf175fca.svg": "/static/media/Discord.cf175fca.svg",
     "static/media/EDG.14b28b06.png": "/static/media/EDG.14b28b06.png",
     "static/media/Ecommerce.ead1d75e.jpg": "/static/media/Ecommerce.ead1d75e.jpg",
+    "static/media/Elon.1dacf1dd.png": "/static/media/Elon.1dacf1dd.png",
     "static/media/Eslint.895093d4.svg": "/static/media/Eslint.895093d4.svg",
     "static/media/Eton.3b9fde04.png": "/static/media/Eton.3b9fde04.png",
     "static/media/Fliki.087ab40c.png": "/static/media/Fliki.087ab40c.png",
@@ -84,6 +81,7 @@
     "static/media/W.b45e21f3.jpg": "/static/media/W.b45e21f3.jpg",
     "static/media/Web.0a489342.jpg": "/static/media/Web.0a489342.jpg",
     "static/media/Webhooks.2af28032.svg": "/static/media/Webhooks.2af28032.svg",
+    "static/media/Wombo.386ef0a9.png": "/static/media/Wombo.386ef0a9.png",
     "static/media/Zyro.b4c60d77.png": "/static/media/Zyro.b4c60d77.png",
     "static/media/Zyro.f1122947.mp4": "/static/media/Zyro.f1122947.mp4",
     "static/media/ab01.d5ba2214.jpg": "/static/media/ab01.d5ba2214.jpg",
@@ -105,9 +103,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c7e3eabc.js",
-    "static/css/2.9733fa82.chunk.css",
-    "static/js/2.c96d2a65.chunk.js",
-    "static/css/main.3f00f6ad.chunk.css",
-    "static/js/main.f86a80fe.chunk.js"
+    "static/css/2.11895fed.chunk.css",
+    "static/js/2.0ad94e4b.chunk.js",
+    "static/css/main.ec769175.chunk.css",
+    "static/js/main.ee579b79.chunk.js"
   ]
 }

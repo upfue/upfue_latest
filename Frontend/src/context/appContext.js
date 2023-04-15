@@ -28,6 +28,7 @@ const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token,
   showSideBar: false,
+  isEditing: false,
 };
 
 const AppContext = React.createContext();
@@ -142,6 +143,10 @@ const AppProvider = ({ children }) => {
     }
     clearAlert();
   };
+  const createBlog = async () => {
+    try {
+    } catch (error) {}
+  };
 
   return (
     <AppContext.Provider
@@ -153,6 +158,7 @@ const AppProvider = ({ children }) => {
         toggleSideBar,
         logoutUser,
         updateUser,
+        createBlog,
       }}
     >
       {children}

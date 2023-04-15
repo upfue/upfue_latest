@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import { Button, Form, Input, Label } from 'reactstrap';
 import 'react-quill/dist/quill.snow.css';
+import { useAppContext } from '../../context/appContext';
+import Alert from '../../components/Alert';
 
 const modules = {
   toolbar: [
@@ -31,27 +33,40 @@ const formats = [
   'image',
 ];
 const Blog = () => {
+  const { displayAlert, isEditing, showAlert } = useAppContext();
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [files, setFiles] = useState('');
-
-  const CreatePost = (e) => {
-    const data = new FormData();
-    data.set('title', title);
-    data.set('content', content);
-    data.set('file', files[0]);
-    e.preventDefault();
-    console.log(files);
-    fetch('http://localhost:5001/api/v1/blog', {
-      method: 'POST',
-      body: data,
-    });
+  const handleSubmit = (e) => {
+    e.preventDefault(e);
+    if (!title || !content || !files) {
+      displayAlert();
+      return;
+    }
+    console.log('create job');
   };
+  // const CreatePost = async (e) => {
+  //   const data = new FormData();
+  //   data.set('title', title);
+  //   data.set('content', content);
+  //   data.set('file', files[0]);
+  //   e.preventDefault();
+  //   console.log(files);
+  //   const response = await fetch('http://localhost:5001/api/v1/blog', {
+  //     method: 'POST',
+  //     mode: 'cors',
+  //     body: data,
+  //   });
+  // };
 
   return (
     <div>
-      <h1 className="text-capitalize text-center ">Create Blogs</h1>
-      <Form onSubmit={CreatePost}>
+      <h1 className="text-capitalize text-center ">
+        {isEditing ? 'Create Blogs' : 'Edit Blog'}
+      </h1>
+      {showAlert && <Alert />}
+      <Form onSubmit={handleSubmit}>
         <Label className="form-label my-3 text-capitalize ">
           Title<span className="text-danger">*</span>
         </Label>
@@ -75,9 +90,15 @@ const Blog = () => {
           value={content}
           modules={modules}
           formats={formats}
-          onChange={(e) => setContent(e.target.value)}
+          onChange={(e) => {
+            content = e.target.value;
+          }}
         />
-        <Button type="submit" className="w-100 btn-primary mt-5 float-end">
+        <Button
+          type="submit"
+          onClick={handleSubmit}
+          className="w-100 btn-primary mt-5 float-end"
+        >
           Create Blog
         </Button>
       </Form>

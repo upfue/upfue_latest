@@ -10,6 +10,7 @@ const createBlog = async (req, res) => {
   req.body.createdBy = req.user.userId;
   const blog = await Blog.create(req.body);
   res.status(StatusCodes.CREATED).json({ blog });
+  res.json(req.files);
 };
 
 const deleteBlog = async (req, res) => {

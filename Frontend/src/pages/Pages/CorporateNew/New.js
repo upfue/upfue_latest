@@ -10,6 +10,7 @@ import Lazada from '../../../assets/images/Lazada.png';
 import Eton from '../../../assets/images/Eton.png';
 import Tongyi from '../../../assets/images/Tongyi.png';
 import Laz from '../../../assets/images/Laz.png';
+import Elon from '../../../assets/images/Elon.png';
 
 class New extends Component {
   constructor(props) {
@@ -76,6 +77,14 @@ class New extends Component {
           badge: 'Business',
           title: 'Lazada can benefit from Alibaba’s restructuring',
           date: '12 April 2023',
+        },
+        {
+          id: 6,
+          img: Elon,
+          link: '/news-details-7',
+          badge: 'Business',
+          title: 'Elon Musk plans AI start-up to rival OpenAI',
+          date: '15 April 2023',
         },
       ],
     };

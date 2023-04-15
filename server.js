@@ -4,15 +4,15 @@ import connectDB from "./db/connect.js";
 import "express-async-errors";
 import morgan from "morgan";
 
+
 //middleware
 import notFoundMiddleware from "./middlleware/not-found.js";
 import errorHandlerMiddleware from "./middlleware/error-handler.js";
 import authRouter from "./routes/authRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
 import authenticateUser from "./middlleware/auth.js";
-import cors from "cors";
 const app = express();
-app.use(cors);
+
 dotenv.config();
 
 if (process.env.NODE_ENV !== "production") {
