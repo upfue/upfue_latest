@@ -36,13 +36,19 @@ const links = [
     icon: <FaWpforms />,
   },
   {
-    id: 5,
+    id: 6,
     text: 'All Jobs',
     path: 'all-jobs',
     icon: <FaWpforms />,
   },
   {
     id: 7,
+    text: 'All Blogs',
+    path: 'all-blogs',
+    icon: <FaWpforms />,
+  },
+  {
+    id: 8,
     text: 'profile',
     path: 'profile',
     icon: <ImProfile />,

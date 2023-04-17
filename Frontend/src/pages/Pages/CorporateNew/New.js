@@ -63,7 +63,7 @@ class New extends Component {
           date: '11 April 2023',
         },
         {
-          id: 5,
+          id: 6,
           img: Tongyi,
           link: '/news-details-5',
           badge: 'Business',
@@ -71,7 +71,7 @@ class New extends Component {
           date: '11 April 2023',
         },
         {
-          id: 5,
+          id: 7,
           img: Laz,
           link: '/news-details-6',
           badge: 'Business',
@@ -79,7 +79,7 @@ class New extends Component {
           date: '12 April 2023',
         },
         {
-          id: 6,
+          id: 8,
           img: Elon,
           link: '/news-details-7',
           badge: 'Business',

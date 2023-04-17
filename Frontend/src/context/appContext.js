@@ -14,6 +14,13 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  HANDLE_CHANGE,
+  CLEAR_VALUES,
+  CREATE_BLOG_BEGIN,
+  CREATE_BLOG_SUCCESS,
+  CREATE_BLOG_ERROR,
+  GET_BLOGS_BEGIN,
+  GET_BLOGS_SUCCESS,
 } from './actions';
 import axios from 'axios';
 
@@ -29,6 +36,13 @@ const initialState = {
   token: token,
   showSideBar: false,
   isEditing: false,
+  editBlogId: '',
+  title: '',
+  blogImage: '',
+  blogs: [],
+  totalBlogs: 0,
+  numOfPages: 1,
+  page: 1,
 };
 
 const AppContext = React.createContext();
@@ -143,11 +157,58 @@ const AppProvider = ({ children }) => {
     }
     clearAlert();
   };
-  const createBlog = async () => {
-    try {
-    } catch (error) {}
+  const handleChange = ({ name, value }) => {
+    dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
+  };
+  const clearValues = () => {
+    dispatch({ type: CLEAR_VALUES });
   };
 
+  const createBlog = async () => {
+    dispatch({ type: CREATE_BLOG_BEGIN });
+    try {
+      const { title, blogImage } = state;
+      await authFetch.post('/blog', {
+        title,
+        blogImage,
+      });
+      dispatch({
+        type: CREATE_BLOG_SUCCESS,
+      });
+      dispatch({
+        type: CLEAR_VALUES,
+      });
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: CREATE_BLOG_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  };
+
+  const getBlogs = async () => {
+    let url = `/blog`;
+
+    dispatch({ type: GET_BLOGS_BEGIN });
+    try {
+      const { data } = await authFetch(url);
+      const { blogs, totalBlogs, numOfPages } = data;
+      dispatch({
+        type: GET_BLOGS_SUCCESS,
+        payload: {
+          blogs,
+          totalBlogs,
+          numOfPages,
+        },
+      });
+    } catch (error) {
+      console.log(error.response);
+      logoutUser();
+    }
+    clearAlert();
+  };
   return (
     <AppContext.Provider
       value={{
@@ -158,7 +219,10 @@ const AppProvider = ({ children }) => {
         toggleSideBar,
         logoutUser,
         updateUser,
+        handleChange,
+        clearValues,
         createBlog,
+        getBlogs,
       }}
     >
       {children}

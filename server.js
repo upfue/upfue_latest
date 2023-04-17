@@ -4,12 +4,12 @@ import connectDB from "./db/connect.js";
 import "express-async-errors";
 import morgan from "morgan";
 
-
 //middleware
 import notFoundMiddleware from "./middlleware/not-found.js";
 import errorHandlerMiddleware from "./middlleware/error-handler.js";
 import authRouter from "./routes/authRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
+import galleryRouter from "./routes/galleryRoutes.js";
 import authenticateUser from "./middlleware/auth.js";
 const app = express();
 
@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/blog", authenticateUser, blogRouter);
+app.use("api/v1/gallery", authenticateUser, galleryRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

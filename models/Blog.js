@@ -7,11 +7,7 @@ const BlogSchema = new mongoose.Schema(
       required: [true, "Please provide title"],
       unique: true,
     },
-    description: {
-      type: String,
-      required: [true, "Please provide description"],
-    },
-    image: {
+    blogImage: {
       type: String,
       required: [true, "Please provide image"],
     },

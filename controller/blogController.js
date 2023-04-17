@@ -3,22 +3,24 @@ import { StatusCodes } from "http-status-codes";
 import { BadRequestError, UnAuthenticatedError } from "../errors/index.js";
 
 const createBlog = async (req, res) => {
-  const { title, image, description } = req.body;
-  if (!title || !image || !description) {
+  const { title, blogImage } = req.body;
+  if (!title || !blogImage) {
     throw new BadRequestError("Please provide all values");
   }
   req.body.createdBy = req.user.userId;
   const blog = await Blog.create(req.body);
   res.status(StatusCodes.CREATED).json({ blog });
-  res.json(req.files);
 };
-
+const getAllblog = async (req, res) => {
+  const blogs = await Blog.find({ createdBy: req.user.userId });
+  res
+    .status(StatusCodes.OK)
+    .json({ blogs, totalBlogs: blogs.length, numOfPages: 1 });
+};
 const deleteBlog = async (req, res) => {
   res.status(200).json({ msg: `Blog created1` });
 };
-const getAllblog = async (req, res) => {
-  res.status(200).json({ msg: `Blog created1` });
-};
+
 const updateBlog = async (req, res) => {
   res.status(200).json({ msg: `Blog created1` });
 };

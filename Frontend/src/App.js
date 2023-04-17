@@ -47,6 +47,7 @@ import AllJobs from './pages/CorporateBackend/AllJobs';
 import CorporateBlogDetail7 from './pages/Pages/CorporateBlogDetail7';
 import CorporateBlogDetail8 from './pages/Pages/CorporateBlogDetail8';
 import CorporateNewDetail7 from './pages/Pages/CorporateNewDetail7';
+import AllBlogs from './pages/CorporateBackend/AllBlogs';
 
 // import "./assets/css/colors/default.css";
 class App extends Component {
@@ -134,6 +135,7 @@ class App extends Component {
               <Route path="job-position" element={<JobPosition />} />
               <Route path="profile" element={<Profile />} />
               <Route path="all-jobs" element={<AllJobs />} />
+              <Route path="all-blogs" element={<AllBlogs />} />
             </Route>
           </Routes>
         </BrowserRouter>
