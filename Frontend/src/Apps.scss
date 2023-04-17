@@ -20,7 +20,7 @@
 // @import './assets/scss/style-dark.scss';
 
 //features scss
-@import "./assets/scss/features"; 
+@import './assets/scss/features';
 
 // drawer
 .react-drawer-drawer {
@@ -84,7 +84,7 @@
 .carousel-overlay {
   .carousel-item {
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
@@ -101,7 +101,7 @@
 }
 
 #style-switcher {
-  transition: all .4s;
+  transition: all 0.4s;
   background: none repeat scroll 0 0 $white;
   box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);
   left: -189px;
@@ -128,4 +128,21 @@
     top: 17px;
     right: 17px;
   }
+}
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  border: 5px solid var(--grey-400);
+  border-radius: 50%;
+  border-top-color: var(--primary-500);
+  animation: spinner 2s linear infinite;
+}
+.loading-center {
+  margin: 0 auto;
 }

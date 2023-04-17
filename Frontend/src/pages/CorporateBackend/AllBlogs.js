@@ -1,7 +1,12 @@
 import React from 'react';
-
+import BlogsContainer from '../../components/BlogsContainer.js';
+import SearchContainer from '../../components/SearchContainer.js';
 const AllBlogs = () => {
-  return <div>AllBlogs</div>;
+  return (
+    <>
+      <SearchContainer />
+      <BlogsContainer />
+    </>
+  );
 };
-
 export default AllBlogs;

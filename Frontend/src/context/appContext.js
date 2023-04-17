@@ -209,6 +209,13 @@ const AppProvider = ({ children }) => {
     }
     clearAlert();
   };
+
+  const setEditBlog = (id) => {
+    console.log(`set edit job ${id}`);
+  };
+  const deleteBlog = (id) => {
+    console.log(`set edit job ${id}`);
+  };
   return (
     <AppContext.Provider
       value={{
@@ -223,6 +230,8 @@ const AppProvider = ({ children }) => {
         clearValues,
         createBlog,
         getBlogs,
+        setEditBlog,
+        deleteBlog,
       }}
     >
       {children}
