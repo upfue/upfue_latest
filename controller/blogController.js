@@ -1,6 +1,6 @@
 import Blog from "../models/Blog.js";
 import { StatusCodes } from "http-status-codes";
-import { BadRequestError, UnAuthenticatedError } from "../errors/index.js";
+import { BadRequestError } from "../errors/index.js";
 
 const createBlog = async (req, res) => {
   const { title, blogImage } = req.body;
@@ -12,7 +12,9 @@ const createBlog = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ blog });
 };
 const getAllblog = async (req, res) => {
-  const blogs = await Blog.find({ createdBy: req.user.userId });
+  const blogs = await Blog.find({
+    createdBy: req.user.userId,
+  }).populate("createdBy", ["name"]);
   res
     .status(StatusCodes.OK)
     .json({ blogs, totalBlogs: blogs.length, numOfPages: 1 });

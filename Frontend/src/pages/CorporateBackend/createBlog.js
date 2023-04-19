@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'reactstrap';
 import { useAppContext } from '../../context/appContext';
 import Alert from '../../components/Alert';
 import BlogFormRow from '../../components/BlogFormRow';
+import axios from 'axios';
 
 const addBlog = () => {
   const {
@@ -16,7 +17,12 @@ const addBlog = () => {
     clearValues,
     createBlog,
   } = useAppContext();
-  const handleSubmit = (e) => {
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!title || !blogImage) {
@@ -49,7 +55,7 @@ const addBlog = () => {
           handleChange={handleJobInput}
         />
         <BlogFormRow
-          type="text"
+          type="file"
           labelText="blogImage"
           name="blogImage"
           value={blogImage}

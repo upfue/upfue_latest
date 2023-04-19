@@ -1,4 +1,4 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useReducer, useContext, useState } from 'react';
 import reducer from './reducer';
 import {
   DISPLAY_ALERT,
@@ -32,7 +32,7 @@ const initialState = {
   showAlert: false,
   alertText: '',
   alertType: '',
-  user: user ? JSON.parse(user) : null,
+  user: user ? JSON.stringify(user) : null,
   token: token,
   showSideBar: false,
   isEditing: false,
@@ -51,7 +51,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const authFetch = axios.create({
-    baseURL: '/api/v1',
+    baseURL: 'http://localhost:5001/api/v1',
   });
 
   authFetch.interceptors.request.use(
@@ -120,7 +120,10 @@ const AppProvider = ({ children }) => {
     console.log(currentUser);
     dispatch({ type: LOGIN_USER_BEGIN });
     try {
-      const { data } = await axios.post(`api/v1/auth/login`, currentUser);
+      const { data } = await axios.post(
+        'http://localhost:5001/api/v1/auth/login',
+        currentUser,
+      );
       const { user, token } = data;
       dispatch({ type: LOGIN_USER_SUCCESS, payload: { user, token } });
       addUserToLocalStorage({ user, token });
@@ -189,7 +192,7 @@ const AppProvider = ({ children }) => {
   };
 
   const getBlogs = async () => {
-    let url = `/blog`;
+    let url = '/blog';
 
     dispatch({ type: GET_BLOGS_BEGIN });
     try {

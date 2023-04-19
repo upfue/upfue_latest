@@ -3,41 +3,60 @@ import moment from 'moment';
 import React from 'react';
 import Wrapper from './Wrapper/Blog';
 import { Link } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Card, CardBody } from 'reactstrap';
+import BlogInfo from './BlogInfo';
 
-const Blog = ({ _id, title, createdAt, blogImage }) => {
+const Blog = ({ _id, title, createdAt, blogImage, createdBy }) => {
   const { deleteBlog, setEditBlog } = useAppContext();
   let date = moment(createdAt);
-  date = date.format('Do MMM YYYY');
+  date = date.format('Do MMM YYYY, LTS');
   return (
     <Wrapper>
       <header>
-        <div className="main-icon">{title.charAt(0)}</div>
-        <div className="info">
-          <h5>{title}</h5>
-          <p>{blogImage}</p>
-        </div>
+        <Card className="border-0 blog shadow overflow-hidden">
+          <h1 src={blogImage} className="img-fluid" alt="">
+            {_id}
+          </h1>
+          <CardBody className="content">
+            <ul className="list-unstyled d-flex justify-content-between">
+              <p className="text-muted">{date}</p>
+              <li className="text-muted">
+                <Link to="#" className="badge bg-soft-primary">
+                  AI
+                </Link>
+              </li>
+            </ul>
+            <h5>
+              <Link to="#" className="card-title title text-dark">
+                {title}
+              </Link>
+            </h5>
+            <div className="post-meta d-flex justify-content-between mt-3">
+              <h6 className="text-capitalize text-muted">
+                created by: {createdBy.name}
+              </h6>
+            </div>
+            <footer>
+              <div className="actions">
+                <Link
+                  to="/dashboard/blogs"
+                  className="btn edit-btn text-capitalize"
+                  onClick={() => setEditBlog(_id)}
+                >
+                  Edit
+                </Link>
+                <button
+                  type="button"
+                  className="btn delete-btn text-capitalize"
+                  onClick={() => deleteBlog(_id)}
+                >
+                  delete
+                </button>
+              </div>
+            </footer>
+          </CardBody>
+        </Card>
       </header>
-      <div className="content">
-        <footer>
-          <div className="actions">
-            <Link
-              to="/dashboard/blogs"
-              className="btn edit-btn text-capitalize"
-              onClick={() => setEditBlog(_id)}
-            >
-              Edit
-            </Link>
-            <button
-              type="button"
-              className="btn delete-btn text-capitalize"
-              onClick={() => deleteBlog(_id)}
-            >
-              delete
-            </button>
-          </div>
-        </footer>
-      </div>
     </Wrapper>
   );
 };

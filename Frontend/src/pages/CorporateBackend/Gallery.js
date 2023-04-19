@@ -1,31 +1,74 @@
-import React, { useState } from 'react';
-import { Label, Input, Form, Button } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Button, Input, Col } from 'reactstrap';
+import GalleryPhoto from '../../components/GalleryPhoto';
 
 const Gallery = () => {
-  const [photos, setPhotos] = useState('');
+  const [file, setFile] = useState('');
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('token');
+    const formData = new FormData();
+    formData.set('file', file);
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'multipart/form-data;',
+      },
+      body: formData,
+    };
+    try {
+      await axios.post(
+        'http://localhost:5001/api/v1/gallery',
+        formData,
+        config,
+      );
+      console.log(file);
+    } catch (error) {
+      console.error(error);
+    }
   };
+  const [gallery, setGallery] = useState([]);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const config = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'multipart/form-data;',
+      },
+    };
+    axios
+      .get('http://localhost:5001/api/v1/gallery', config)
+      .then((res) => {
+        console.log(res.data);
+        setGallery(res.data.gallery);
+        console.log(res.data.gallery);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div>
-      <h1 className="text-center">Gallery</h1>
-      <Form onSubmit={handleSubmit}>
-        <Label className="form-label text-capitalize my-3">
-          Upload File<span className="text-danger">*</span>
-        </Label>
-        <Input
-          type="file"
-          onChange={(e) => setPhotos(e.target.value)}
-          className="form-control mb-3"
-        />
-        <Button
-          type="submit"
-          onClick={handleSubmit}
-          className="w-100 btn-primary mt-5 float-end"
-        >
-          Upload Images
+      <form onSubmit={handleSubmit}>
+        <Input className="mb-3" type="file" onChange={handleFileChange} />
+        <Button className="w-100 btn-success" type="submit">
+          Upload
         </Button>
-      </Form>
+      </form>
+      <div>
+        {gallery.length > 0 &&
+          gallery.map((gallery, key) => (
+            <Col lg={4} md={6} xs={12} key={key} className="mb-4 pb-2 d-flex">
+              <GalleryPhoto key={gallery._id} {...gallery} />
+            </Col>
+          ))}
+      </div>
     </div>
   );
 };

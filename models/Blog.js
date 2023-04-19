@@ -16,6 +16,10 @@ const BlogSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Please provide user"],
     },
+    author: {
+      type: String,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

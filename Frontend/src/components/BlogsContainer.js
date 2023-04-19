@@ -4,6 +4,7 @@ import Loading from './Loading';
 import Blog from './Blog';
 import Wrapper from './Wrapper/BlogContainer';
 import React from 'react';
+import { Row, Col } from 'reactstrap';
 
 const BlogsContainer = () => {
   const { getBlogs, blogs, isLoading, page, totalBlogs } = useAppContext();
@@ -23,14 +24,16 @@ const BlogsContainer = () => {
   }
   return (
     <Wrapper>
-      <h5 className="text-capitalize">
+      <h5 className="text-capitalize mb-3">
         {totalBlogs} Blog{blogs.length > 1 && 's'} found{' '}
-        <div className="blogs">
-          {blogs.map((blog) => {
-            return <Blog key={blog._id} {...blog} />;
-          })}
-        </div>
       </h5>
+      <Row>
+        {blogs.map((blog, key) => (
+          <Col lg={4} md={6} xs={12} key={key} className="mb-4 pb-2 d-flex">
+            <Blog key={blog._id} {...blog} />
+          </Col>
+        ))}
+      </Row>
     </Wrapper>
   );
 };

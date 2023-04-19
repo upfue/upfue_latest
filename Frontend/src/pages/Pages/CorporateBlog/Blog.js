@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Col, Container, Row, CardBody } from 'reactstrap';
 
@@ -12,6 +12,7 @@ import DallE from '../../../assets/images/blog/DallE.png';
 import Zyro from '../../../assets/images/blog/Zyro.png';
 import Artbreeder from '../../../assets/images/blog/Artbreeder.png';
 import Wombo from '../../../assets/images/blog/Wombo.png';
+import { useAppContext } from '../../../context/appContext';
 
 class Blog extends Component {
   constructor(props) {
