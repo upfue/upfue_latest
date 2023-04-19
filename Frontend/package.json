@@ -35,6 +35,7 @@
     "react-modal-video": "^1.2.9",
     "react-parallax": "^3.5.1",
     "react-player": "^2.10.1",
+    "react-quill": "^2.0.0",
     "react-responsive-masonry": "^2.1.4",
     "react-router-dom": "^6.9.0",
     "react-scripts": "^4.0.3",
@@ -55,7 +56,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts build --max_old_space_size=8000 build",
+    "build": "react-scripts build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\"",
