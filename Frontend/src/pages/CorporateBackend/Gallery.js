@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Input, Col } from 'reactstrap';
+import { Button, Input, Col, Row, Card, CardBody } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import GalleryPhoto from '../../components/GalleryPhoto';
 
 const Gallery = () => {
@@ -62,12 +63,20 @@ const Gallery = () => {
         </Button>
       </form>
       <div>
-        {gallery.length > 0 &&
-          gallery.map((gallery, key) => (
-            <Col lg={4} md={6} xs={12} key={key} className="mb-4 pb-2 d-flex">
-              <GalleryPhoto key={gallery._id} {...gallery} />
-            </Col>
-          ))}
+        <Row>
+          {gallery.length > 0 &&
+            gallery.map((gallery, key) => (
+              <Col
+                lg={4}
+                md={6}
+                xs={12}
+                key={key}
+                className="mt-4 pt-2 picture-item d-flex"
+              >
+                <GalleryPhoto key={gallery._id} {...gallery} />
+              </Col>
+            ))}
+        </Row>
       </div>
     </div>
   );

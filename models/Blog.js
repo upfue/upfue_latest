@@ -5,7 +5,6 @@ const BlogSchema = new mongoose.Schema(
     title: {
       type: String,
       required: [true, "Please provide title"],
-      unique: true,
     },
     blogImage: {
       type: String,

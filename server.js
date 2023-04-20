@@ -17,23 +17,33 @@ import { fileURLToPath } from "url";
 const app = express();
 dotenv.config();
 app.use(cors());
+app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.resolve(__dirname, "./Frontend/build")));
+
 console.log(__dirname);
-app.use("/api/v1/gallery/uploads", express.static(path.join(__dirname, "/uploads")));
+app.use(
+  "/api/v1/gallery/uploads",
+  express.static(path.join(__dirname, "/uploads"))
+);
 
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
 }
-app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("welcome!");
 });
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/blog", authenticateUser, blogRouter);
-app.use("/api/v1/gallery",authenticateUser, galleryRouter);
+app.use("/api/v1/gallery", galleryRouter);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./Frontend/build", "index.html"));
+});
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

@@ -19,6 +19,11 @@ import {
   CREATE_BLOG_ERROR,
   GET_BLOGS_BEGIN,
   GET_BLOGS_SUCCESS,
+  SET_EDIT_BLOG,
+  DELETE_BLOG_BEGIN,
+  EDIT_BLOG_BEGIN,
+  EDIT_BLOG_SUCCESS,
+  EDIT_BLOG_ERROR,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -171,6 +176,42 @@ const reducer = (state, action) => {
       blogs: action.payload.blogs,
       totalBlogs: action.payload.totalBlogs,
       numOfPages: action.payload.numOfPages,
+    };
+  }
+  if (action.type === SET_EDIT_BLOG) {
+    // const blog = state.blogs.find((blog) => blog._id === action.payload.id);
+    const blog = state.blogs.find((blog) => blog._id === action.payload.id);
+    const { _id, title, blogImage } = blog;
+    return {
+      ...state,
+      isEditing: true,
+      editBlogId: _id,
+      blogImage,
+      title,
+    };
+  }
+  if (action.type === DELETE_BLOG_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === EDIT_BLOG_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === EDIT_BLOG_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Blog Updated!',
+    };
+  }
+  if (action.type === EDIT_BLOG_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
     };
   }
   throw new Error(`no such action: ${action.type}`);

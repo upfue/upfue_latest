@@ -42,6 +42,7 @@ const Blog = ({ _id, title, createdAt, blogImage, createdBy }) => {
                   to="/dashboard/blogs"
                   className="btn edit-btn text-capitalize"
                   onClick={() => setEditBlog(_id)}
+                  
                 >
                   Edit
                 </Link>

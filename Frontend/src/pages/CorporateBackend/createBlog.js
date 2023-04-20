@@ -16,12 +16,9 @@ const addBlog = () => {
     handleChange,
     clearValues,
     createBlog,
+    editBlog,
   } = useAppContext();
-  const [file, setFile] = useState(null);
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,7 +27,7 @@ const addBlog = () => {
       return;
     }
     if (isEditing) {
-      editJob();
+      editBlog();
       return;
     }
     createBlog();
@@ -55,7 +52,7 @@ const addBlog = () => {
           handleChange={handleJobInput}
         />
         <BlogFormRow
-          type="file"
+          type="text"
           labelText="blogImage"
           name="blogImage"
           value={blogImage}
@@ -71,7 +68,7 @@ const addBlog = () => {
           Clear
         </Button>
         <Button className="w-100 mt-3" type="submit" onClick={handleSubmit}>
-          Create Blog
+          Submit
         </Button>
       </Form>
     </div>
