@@ -21,6 +21,11 @@ import {
   CREATE_BLOG_ERROR,
   GET_BLOGS_BEGIN,
   GET_BLOGS_SUCCESS,
+  SET_EDIT_BLOG,
+  DELETE_BLOG_BEGIN,
+  EDIT_BLOG_BEGIN,
+  EDIT_BLOG_SUCCESS,
+  EDIT_BLOG_ERROR,
 } from './actions';
 import axios from 'axios';
 
@@ -213,11 +218,36 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const setEditBlog = (id) => {
-    console.log(`set edit job ${id}`);
+  const setEditBlog = async (id) => {
+    dispatch({ type: SET_EDIT_BLOG, payload: { id } });
   };
-  const deleteBlog = (id) => {
-    console.log(`set edit job ${id}`);
+  const editBlog = async () => {
+    dispatch({ type: EDIT_BLOG_BEGIN });
+    try {
+      const { title, blogImage } = state;
+
+      await authFetch.patch(`/blog/${state.editBlogId}`, { title, blogImage });
+      dispatch({
+        type: EDIT_BLOG_SUCCESS,
+      });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: EDIT_BLOG_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  };
+  const deleteBlog = async (blogId) => {
+    dispatch({ type: DELETE_BLOG_BEGIN });
+    try {
+      await authFetch.delete(`/blog/${blogId}`);
+      getBlogs();
+    } catch (error) {
+      logoutUser();
+    }
   };
   return (
     <AppContext.Provider
@@ -235,6 +265,7 @@ const AppProvider = ({ children }) => {
         getBlogs,
         setEditBlog,
         deleteBlog,
+        editBlog,
       }}
     >
       {children}
