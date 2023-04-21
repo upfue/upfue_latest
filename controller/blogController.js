@@ -7,6 +7,7 @@ import {
 } from "../errors/index.js";
 import fs from "fs";
 import checkPermissions from "../utils/checkPermissions.js";
+import mongoose from "mongoose";
 
 //CREATE BLOGS
 const createBlog = async (req, res) => {
@@ -68,7 +69,24 @@ const deleteBlog = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: "Success! Blog deleted" });
 };
 const showStats = async (req, res) => {
-  res.status(200).json({ msg: `Blog created1` });
+  let stats = await Blog.aggregate([
+    { $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) } },
+    { $group: { _id: "$title", count: { $sum: 1 } } },
+  ]);
+
+  stats = stats.reduce((acc, curr) => {
+    const { _id: title, count } = curr;
+    acc[title] = count;
+    return acc;
+  }, {});
+
+  const defaultStats = {
+    title: stats.Nurse || 0,
+  };
+
+  let monthlyApplications = [];
+
+  res.status(StatusCodes.OK).json({ defaultStats,stats, monthlyApplications });
 };
 
 export { createBlog, deleteBlog, getAllblog, updateBlog, showStats };

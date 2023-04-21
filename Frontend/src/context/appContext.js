@@ -37,7 +37,7 @@ const initialState = {
   showAlert: false,
   alertText: '',
   alertType: '',
-  user: user ? JSON.stringify(user) : null,
+  user: user ? JSON.parse(user) : null,
   token: token,
   showSideBar: false,
   isEditing: false,
