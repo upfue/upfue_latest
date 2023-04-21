@@ -1,37 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Input, Col, Row, Card, CardBody } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { useAppContext } from '../../context/appContext';
 import GalleryPhoto from '../../components/GalleryPhoto';
-
+import Alert from '../../components/Alert';
 const Gallery = () => {
-  const [file, setFile] = useState('');
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
+  const {
+    showAlert,
+    createGallery,
+    galleryImage,
+    displayAlert,
+    handleFileChange,
+  } = useAppContext();
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const file = e.target.files[0];
+    handleFileChange({ file, name });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
-    const formData = new FormData();
-    formData.set('file', file);
-    const config = {
-      headers: {
-        Authorization: 'Bearer ' + token,
-        'Content-Type': 'multipart/form-data;',
-      },
-      body: formData,
-    };
-    try {
-      await axios.post(
-        'http://localhost:5001/api/v1/gallery',
-        formData,
-        config,
-      );
-      console.log(file);
-    } catch (error) {
-      console.error(error);
+    if (!galleryImage) {
+      displayAlert();
+      return;
     }
+    const currentFile = galleryImage;
+    createGallery(currentFile);
   };
   const [gallery, setGallery] = useState([]);
   useEffect(() => {
@@ -57,7 +51,13 @@ const Gallery = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Input className="mb-3" type="file" onChange={handleFileChange} />
+        {showAlert && <Alert />}
+        <Input
+          className="mb-3"
+          type="file"
+          name="galleryImage"
+          onChange={handleChange}
+        />
         <Button className="w-100 btn-success" type="submit">
           Upload
         </Button>

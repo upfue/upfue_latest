@@ -9,10 +9,14 @@ const createSingleImage = async (req, res) => {
   const ext = parts[parts.length - 1];
   const newPath = path + "." + ext;
   fs.renameSync(path, newPath);
+
+  if (!req.file) {
+    throw new BadRequestError("Please upload a image");
+  }
   const gallery = await Gallery.create({
     GalleryImage: newPath,
   });
-  res.json({ files: req.file });
+  res.status(StatusCodes.CREATED).json(gallery);
 };
 
 const getAllImages = async (req, res) => {

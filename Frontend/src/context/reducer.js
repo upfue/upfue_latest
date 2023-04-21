@@ -24,6 +24,10 @@ import {
   EDIT_BLOG_BEGIN,
   EDIT_BLOG_SUCCESS,
   EDIT_BLOG_ERROR,
+  CREATE_GALLERY_BEGIN,
+  CREATE_GALLERY_SUCCESS,
+  CREATE_GALLERY_ERROR,
+  HANDLE_FILE_CHANGE,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -133,6 +137,12 @@ const reducer = (state, action) => {
       [action.payload.name]: action.payload.value,
     };
   }
+  if (action.type === HANDLE_FILE_CHANGE) {
+    return {
+      ...state,
+      [action.payload.name]: action.payload.file,
+    };
+  }
   if (action.type === CLEAR_VALUES) {
     const initialState = {
       isEditing: false,
@@ -206,6 +216,27 @@ const reducer = (state, action) => {
     };
   }
   if (action.type === EDIT_BLOG_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    };
+  }
+  if (action.type === CREATE_GALLERY_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === CREATE_GALLERY_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'New Gallery Created!',
+    };
+  }
+  if (action.type === CREATE_GALLERY_ERROR) {
     return {
       ...state,
       isLoading: false,
