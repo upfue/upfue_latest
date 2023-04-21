@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Lightbox from 'react-image-lightbox';
 const GalleryPhoto = ({ _id, GalleryImage }) => {
   const [open, setOpen] = useState(false);
-  const [photoIdx, setPhotoIdx] = useState(0);
   return (
     <div>
       <Card className="border-0 work-container work-grid position-relative d-block overflow-hidden rounded">

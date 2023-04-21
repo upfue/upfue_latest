@@ -18,7 +18,7 @@ const BlogsContainer = () => {
   if (blogs.length === 0) {
     return (
       <Wrapper>
-        <h1>No blogs to display...</h1>
+        <h1 className="text-center">No blogs to display...</h1>
       </Wrapper>
     );
   }

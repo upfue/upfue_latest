@@ -26,6 +26,10 @@ import {
   EDIT_BLOG_BEGIN,
   EDIT_BLOG_SUCCESS,
   EDIT_BLOG_ERROR,
+  CREATE_GALLERY_BEGIN,
+  CREATE_GALLERY_SUCCESS,
+  CREATE_GALLERY_ERROR,
+  HANDLE_FILE_CHANGE,
 } from './actions';
 import axios from 'axios';
 
@@ -48,6 +52,7 @@ const initialState = {
   totalBlogs: 0,
   numOfPages: 1,
   page: 1,
+  galleryImage: '',
 };
 
 const AppContext = React.createContext();
@@ -62,6 +67,7 @@ const AppProvider = ({ children }) => {
   authFetch.interceptors.request.use(
     (config) => {
       config.headers['Authorization'] = `Bearer ${state.token}`;
+      config.headers['Content-Type'] = 'multipart/form-data;';
       return config;
     },
     (error) => {
@@ -168,6 +174,9 @@ const AppProvider = ({ children }) => {
   const handleChange = ({ name, value }) => {
     dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
   };
+  const handleFileChange = ({ name, file }) => {
+    dispatch({ type: HANDLE_FILE_CHANGE, payload: { name, file } });
+  };
   const clearValues = () => {
     dispatch({ type: CLEAR_VALUES });
   };
@@ -249,6 +258,22 @@ const AppProvider = ({ children }) => {
       logoutUser();
     }
   };
+  const createGallery = async (currentFile) => {
+    dispatch({ type: CREATE_GALLERY_BEGIN });
+    try {
+      const formData = new FormData();
+      formData.set('file', currentFile);
+      const data = await authFetch.post('/gallery', formData);
+      formData = data;
+      dispatch({
+        type: CREATE_GALLERY_SUCCESS,
+        payload: { formData },
+      });
+      console.log(formData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <AppContext.Provider
       value={{
@@ -266,6 +291,8 @@ const AppProvider = ({ children }) => {
         setEditBlog,
         deleteBlog,
         editBlog,
+        createGallery,
+        handleFileChange,
       }}
     >
       {children}
