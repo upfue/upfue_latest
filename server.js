@@ -29,7 +29,18 @@ app.use(
   "/api/v1/gallery/uploads",
   express.static(path.join(__dirname, "/uploads"))
 );
-app.use("/api/v1/blog/bloguploads", express.static(path.join(__dirname, "/bloguploads")));
+app.use(
+  "/api/v1/blog/bloguploads",
+  express.static(path.join(__dirname, "/bloguploads"))
+);
+app.use(
+  "/api/v1/blog/:id/bloguploads",
+  express.static(path.join(__dirname, "/bloguploads"))
+);
+app.use(
+  "/api/v1/blog/allblogs/bloguploads",
+  express.static(path.join(__dirname, "/bloguploads"))
+);
 
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));

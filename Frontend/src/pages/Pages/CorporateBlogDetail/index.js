@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NavBar from '../../CorporateBusiness/NavBar';
 import Section from './Section';
 import Footer from '../PageFooterLayouts/Footer1';
-import Blogdetails from './BlogDetails';
+import BlogDetails from './BlogDetails';
 
 class CorporateBlogDetail extends Component {
   render() {
@@ -10,7 +10,7 @@ class CorporateBlogDetail extends Component {
       <React.Fragment>
         <NavBar />
         <Section />
-        <Blogdetails />
+        <BlogDetails />
         <Footer />
       </React.Fragment>
     );

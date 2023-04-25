@@ -6,7 +6,14 @@ import { Link } from 'react-router-dom';
 import { Card, CardBody } from 'reactstrap';
 import BlogInfo from './BlogInfo';
 
-const Blog = ({ _id, title, createdAt, blogImage, createdBy, blogContent }) => {
+const Blog = ({
+  _id,
+  blogTitle,
+  createdAt,
+  blogImage,
+  createdBy,
+  blogContent,
+}) => {
   const { deleteBlog, setEditBlog } = useAppContext();
   let date = moment(createdAt);
   date = date.format('Do MMM YYYY, LTS');
@@ -16,7 +23,7 @@ const Blog = ({ _id, title, createdAt, blogImage, createdBy, blogContent }) => {
         <Card className="border-0 blog shadow overflow-hidden">
           <img
             style={{ height: `400px`, objectFit: `scale-down` }}
-            src={'http://localhost:5001/api/v1/blog/' + blogImage}
+            src={'http://localhost:5001/api/v1/blog/allblogs/' + blogImage}
             className="img-fluid"
             alt=""
           />
@@ -31,10 +38,9 @@ const Blog = ({ _id, title, createdAt, blogImage, createdBy, blogContent }) => {
             </ul>
             <h5>
               <Link to="#" className="card-title title text-dark">
-                {title}
+                {blogTitle}
               </Link>
             </h5>
-            <p>{blogContent}</p>
             <div className="post-meta d-flex justify-content-between mt-3">
               <h6 className="text-capitalize text-muted">
                 created by: {createdBy.name}

@@ -83,10 +83,6 @@ class NavBar extends Component {
     window.scrollTo(0, 0);
     this.initMenu();
     document.body.classList = '';
-    document.querySelectorAll('#buyButton').forEach((navLink) => {
-      navLink.classList.add('btn-light');
-      navLink.classList.remove('btn-soft-primary');
-    });
     window.addEventListener('scroll', this.scrollNavigation, true);
   }
 
@@ -103,9 +99,7 @@ class NavBar extends Component {
       document.querySelector('.settingbtn').classList.add('btn-soft-primary');
       document.getElementById('topnav').classList.add('nav-sticky');
     } else {
-      document
-        .querySelector('.settingbtn')
-        .classList.remove('btn-soft-primary');
+      document.querySelector('.settingbtn').classList.remove('btn-soft-primary');
       document.querySelector('.settingbtn').classList.add('btn-light');
       document.getElementById('topnav').classList.remove('nav-sticky');
     }

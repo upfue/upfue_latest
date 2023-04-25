@@ -27,7 +27,7 @@ class Blogs extends Component {
       },
     };
     axios
-      .get('http://localhost:5001/api/v1/blog', config)
+      .get('http://localhost:5001/api/v1/blog/', config)
       .then((res) => {
         console.log(res.data);
         this.setState({ blogs: res.data.blogs });

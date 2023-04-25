@@ -31,7 +31,7 @@ const createBlog = async (req, res) => {
 };
 
 //GET BLOGS
-const getAllblog = async (req, res) => {
+const getUserBlog = async (req, res) => {
   const blogs = await Blog.find({ createdBy: req.user.userId }).populate(
     "createdBy",
     ["name"]
@@ -42,9 +42,9 @@ const getAllblog = async (req, res) => {
     .json({ blogs, totalBlogs: blogs.length, numOfPages: 1 });
 };
 
-const getSingleblog = async (req, res) => {
-  const singleBlogs = await Blog.findOne({ createdBy: req.user.userId });
-  res.status(StatusCodes.OK).json(singleBlogs);
+const getAllBlog = async (req, res) => {
+  const blogs = await Blog.find();
+  res.status(StatusCodes.OK).json(blogs);
 };
 
 //UPDATE BLOG
@@ -89,6 +89,14 @@ const deleteBlog = async (req, res) => {
   res.status(StatusCodes.OK).json({ msg: "Success! Blog deleted" });
 };
 
+const getBlogDetail = async (req, res) => {
+  const { id: blogId } = req.params;
+  const blogDetail = await Blog.findOne({ _id: blogId }).populate("createdBy", [
+    "name",
+  ]);
+  res.status(StatusCodes.OK).json(blogDetail);
+};
+
 const showStats = async (req, res) => {
   let stats = await Blog.aggregate([
     { $match: { createdBy: new mongoose.Types.ObjectId(req.user.userId) } },
@@ -113,8 +121,9 @@ const showStats = async (req, res) => {
 export {
   createBlog,
   deleteBlog,
-  getAllblog,
-  getSingleblog,
+  getUserBlog,
+  getAllBlog,
   updateBlog,
   showStats,
+  getBlogDetail,
 };

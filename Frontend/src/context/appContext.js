@@ -189,7 +189,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CREATE_BLOG_BEGIN });
     try {
       const data = new FormData();
-      data.set('title', currentBlog.blogTitle);
+      data.set('blogTitle', currentBlog.blogTitle);
       data.set('blogContent', currentBlog.blogContent);
       data.set('file', currentBlog.blogImage);
       await authFetch.post('/blog', data);

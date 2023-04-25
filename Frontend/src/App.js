@@ -89,7 +89,7 @@ class App extends Component {
             <Route path="/news-details-6" element={<CorporateNewDetailSix />} />
             <Route path="/news-details-7" element={<CorporateNewDetail7 />} />
             {/* Blogs */}
-            <Route path="/blog-details" element={<CorporateBlogDetail />} />
+            <Route path="/blog-details/:id" element={<CorporateBlogDetail />} />
             <Route
               path="/blog-details-1"
               element={<CorporateBlogDetailOne />}

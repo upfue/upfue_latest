@@ -2,9 +2,10 @@ import {
   createBlog,
   deleteBlog,
   updateBlog,
-  getAllblog,
-  getSingleblog,
+  getUserBlog,
+  getAllBlog,
   showStats,
+  getBlogDetail,
 } from "../controller/blogController.js";
 import express from "express";
 import multer from "multer";
@@ -16,12 +17,13 @@ const router = express.Router();
 router
   .route("/")
   .post(upload.single("file"), authenticateUser, createBlog)
-  .get(authenticateUser, getAllblog);
+  .get(authenticateUser, getUserBlog);
 router.route("/stats").get(showStats);
+router.route("/allblogs").get(getAllBlog);
 router
   .route("/:id")
   .delete(authenticateUser, deleteBlog)
   .patch(authenticateUser, updateBlog)
-  .get(authenticateUser, getSingleblog);
+  .get(authenticateUser, getBlogDetail);
 
 export default router;

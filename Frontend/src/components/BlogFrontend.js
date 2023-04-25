@@ -8,7 +8,7 @@ import BlogInfo from './BlogInfo';
 
 const BlogFrontend = ({
   _id,
-  title,
+  blogTitle,
   createdAt,
   blogImage,
   createdBy,
@@ -23,7 +23,7 @@ const BlogFrontend = ({
         <Card className="border-0 blog shadow overflow-hidden">
           <img
             style={{ height: `300px`, objectFit: `scale-down` }}
-            src={'http://localhost:5001/api/v1/blog/' + blogImage}
+            src={'http://localhost:5001/api/v1/blog/allblogs/' + blogImage}
             className="img-fluid"
             alt=""
           />
@@ -36,9 +36,9 @@ const BlogFrontend = ({
                 </Link>
               </li>
             </ul>
-            <h5 className="card-title title text-dark">{title}</h5>
+            <h5 className="card-title title text-dark">{blogTitle}</h5>
             <div className="post-meta d-flex justify-content-between mt-3">
-              <Link to="/blog-details">Read More</Link>
+              <Link to={`/blog-details/${_id}`}>Read More</Link>
               <h6 className="text-capitalize text-muted">
                 created by: {createdBy.name}
               </h6>
