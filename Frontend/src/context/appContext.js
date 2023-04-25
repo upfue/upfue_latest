@@ -30,6 +30,7 @@ import {
   CREATE_GALLERY_SUCCESS,
   CREATE_GALLERY_ERROR,
   HANDLE_FILE_CHANGE,
+  HANDLE_QUILL_CHANGE,
 } from './actions';
 import axios from 'axios';
 
@@ -46,8 +47,9 @@ const initialState = {
   showSideBar: false,
   isEditing: false,
   editBlogId: '',
-  title: '',
+  blogTitle: '',
   blogImage: '',
+  blogContent: '',
   blogs: [],
   totalBlogs: 0,
   numOfPages: 1,
@@ -109,10 +111,9 @@ const AppProvider = ({ children }) => {
   };
 
   const registerUser = async (currentUser) => {
-    console.log(currentUser);
     dispatch({ type: REGISTER_USER_BEGIN });
     try {
-      const response = await axios.post(`api/v1/auth/register`, currentUser);
+      const response = await authFetch.post(`/auth/register`, currentUser);
       console.log(response);
       const { user, token } = response.data;
       dispatch({ type: REGISTER_USER_SUCCESS, payload: { user, token } });
@@ -128,7 +129,6 @@ const AppProvider = ({ children }) => {
   };
 
   const loginUser = async (currentUser) => {
-    console.log(currentUser);
     dispatch({ type: LOGIN_USER_BEGIN });
     try {
       const { data } = await axios.post(
@@ -174,21 +174,25 @@ const AppProvider = ({ children }) => {
   const handleChange = ({ name, value }) => {
     dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
   };
-  const handleFileChange = ({ name, file }) => {
-    dispatch({ type: HANDLE_FILE_CHANGE, payload: { name, file } });
+  const handleFileChange = ({ name, file, value }) => {
+    dispatch({ type: HANDLE_FILE_CHANGE, payload: { name, file, value } });
+  };
+  const handleQuillChange = ({ content }) => {
+    dispatch({ type: HANDLE_QUILL_CHANGE, payload: { content } });
   };
   const clearValues = () => {
     dispatch({ type: CLEAR_VALUES });
   };
 
-  const createBlog = async () => {
+  const createBlog = async (currentBlog) => {
+    console.log(currentBlog);
     dispatch({ type: CREATE_BLOG_BEGIN });
     try {
-      const { title, blogImage } = state;
-      await authFetch.post('/blog', {
-        title,
-        blogImage,
-      });
+      const data = new FormData();
+      data.set('title', currentBlog.blogTitle);
+      data.set('blogContent', currentBlog.blogContent);
+      data.set('file', currentBlog.blogImage);
+      await authFetch.post('/blog', data);
       dispatch({
         type: CREATE_BLOG_SUCCESS,
       });
@@ -196,11 +200,7 @@ const AppProvider = ({ children }) => {
         type: CLEAR_VALUES,
       });
     } catch (error) {
-      if (error.response.status === 401) return;
-      dispatch({
-        type: CREATE_BLOG_ERROR,
-        payload: { msg: error.response.data.msg },
-      });
+      console.log(error);
     }
     clearAlert();
   };
@@ -233,9 +233,13 @@ const AppProvider = ({ children }) => {
   const editBlog = async () => {
     dispatch({ type: EDIT_BLOG_BEGIN });
     try {
-      const { title, blogImage } = state;
+      const { blogTitle, blogImage, blogContent } = state;
 
-      await authFetch.patch(`/blog/${state.editBlogId}`, { title, blogImage });
+      await authFetch.patch(`/blog/${state.editBlogId}`, {
+        blogTitle,
+        blogImage,
+        blogContent,
+      });
       dispatch({
         type: EDIT_BLOG_SUCCESS,
       });
@@ -264,15 +268,19 @@ const AppProvider = ({ children }) => {
       const formData = new FormData();
       formData.set('file', currentFile);
       const data = await authFetch.post('/gallery', formData);
-      formData = data;
+      const gallery = data;
       dispatch({
         type: CREATE_GALLERY_SUCCESS,
-        payload: { formData },
+        payload: { gallery },
       });
-      console.log(formData);
     } catch (error) {
-      console.log(error);
+      if (error.response.status === 400) return;
+      dispatch({
+        type: CREATE_GALLERY_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
     }
+    clearAlert();
   };
   return (
     <AppContext.Provider
@@ -293,6 +301,7 @@ const AppProvider = ({ children }) => {
         editBlog,
         createGallery,
         handleFileChange,
+        handleQuillChange,
       }}
     >
       {children}

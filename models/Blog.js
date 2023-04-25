@@ -2,21 +2,17 @@ import mongoose from "mongoose";
 
 const BlogSchema = new mongoose.Schema(
   {
-    title: {
+    blogTitle: {
       type: String,
-      required: [true, "Please provide title"],
     },
     blogImage: {
       type: String,
-      required: [true, "Please provide image"],
+    },
+    blogContent: {
+      type: String,
     },
     createdBy: {
       type: mongoose.Types.ObjectId,
-      ref: "User",
-      required: [true, "Please provide user"],
-    },
-    author: {
-      type: String,
       ref: "User",
     },
   },

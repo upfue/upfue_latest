@@ -133,26 +133,6 @@ const LoginPage = () => {
                           icon="key"
                         />
                       </Col>
-
-                      {/* <Col lg={12}>
-                        <div className="d-flex justify-content-between">
-                          <div className="mb-3">
-                            <div className="form-check">
-                              <Input
-                                type="checkbox"
-                                className="form-check-input"
-                                id="flexCheckDefault"
-                              />
-                              <Label
-                                className="form-check-label"
-                                htmlFor="flexCheckDefault"
-                              >
-                                Remember me
-                              </Label>
-                            </div>
-                          </div>
-                        </div>
-                      </Col> */}
                       <Col lg={12} className="mb-0">
                         <div className="d-grid">
                           <Button

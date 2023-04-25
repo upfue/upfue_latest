@@ -11,14 +11,19 @@ const createSingleImage = async (req, res) => {
   fs.renameSync(path, newPath);
 
   if (!req.file) {
-    throw new BadRequestError("Please upload a image");
+    throw new BadRequestError("Please upload an image");
   }
   const gallery = await Gallery.create({
     GalleryImage: newPath,
+    createdBy: req.user.userId,
   });
   res.status(StatusCodes.CREATED).json(gallery);
 };
 
+const getUserImages = async (req, res) => {
+  const gallery = await Gallery.find({ createdBy: req.user.userId });
+  res.status(StatusCodes.OK).json({ gallery });
+};
 const getAllImages = async (req, res) => {
   const gallery = await Gallery.find();
   res.status(StatusCodes.OK).json({ gallery });
@@ -27,4 +32,10 @@ const getAllImages = async (req, res) => {
 const deleteSingleImage = async (req, res) => {};
 const updateImage = async (req, res) => {};
 
-export { createSingleImage, getAllImages, deleteSingleImage, updateImage };
+export {
+  createSingleImage,
+  getUserImages,
+  getAllImages,
+  deleteSingleImage,
+  updateImage,
+};

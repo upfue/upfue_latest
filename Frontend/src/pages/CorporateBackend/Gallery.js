@@ -4,6 +4,7 @@ import { Button, Input, Col, Row, Card, CardBody } from 'reactstrap';
 import { useAppContext } from '../../context/appContext';
 import GalleryPhoto from '../../components/GalleryPhoto';
 import Alert from '../../components/Alert';
+
 const Gallery = () => {
   const {
     showAlert,
@@ -20,6 +21,7 @@ const Gallery = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!galleryImage) {
       displayAlert();
       return;

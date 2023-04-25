@@ -29,6 +29,7 @@ app.use(
   "/api/v1/gallery/uploads",
   express.static(path.join(__dirname, "/uploads"))
 );
+app.use("/api/v1/blog/bloguploads", express.static(path.join(__dirname, "/bloguploads")));
 
 if (process.env.NODE_ENV !== "production") {
   app.use(morgan("dev"));
@@ -38,7 +39,7 @@ app.get("/", (req, res) => {
   res.send("welcome!");
 });
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/blog", authenticateUser, blogRouter);
+app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/gallery", galleryRouter);
 
 app.get("*", (req, res) => {

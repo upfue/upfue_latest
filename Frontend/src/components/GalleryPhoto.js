@@ -6,20 +6,19 @@ const GalleryPhoto = ({ _id, GalleryImage }) => {
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <Card className="border-0 work-container work-grid position-relative d-block overflow-hidden rounded">
+      <Card className="border-0 work-container work-grid position-relative d-flex overflow-hidden rounded">
         <CardBody className="p-0">
           <Link
-            className="mfp-image d-inline-block"
+            className="mfp-image d-inline-"
             to="#"
             onClick={(event) => {
               event.preventDefault();
               setOpen(true);
-              console.log(open);
             }}
           >
             <img
               height={400}
-              style={{ objectFit: `scale-down`, width: `100%` }}
+              style={{ objectFit: `scale-down`, width: `400px` }}
               src={'http://localhost:5001/api/v1/gallery/' + GalleryImage}
               alt="work"
             />

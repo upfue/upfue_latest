@@ -28,6 +28,7 @@ import {
   CREATE_GALLERY_SUCCESS,
   CREATE_GALLERY_ERROR,
   HANDLE_FILE_CHANGE,
+  HANDLE_QUILL_CHANGE,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -135,6 +136,12 @@ const reducer = (state, action) => {
     return {
       ...state,
       [action.payload.name]: action.payload.value,
+    };
+  }
+  if (action.type === HANDLE_QUILL_CHANGE) {
+    return {
+      ...state,
+      blogContent: action.payload.content,
     };
   }
   if (action.type === HANDLE_FILE_CHANGE) {

@@ -13,7 +13,7 @@ import {
 } from 'reactstrap';
 import NavBar from '../../CorporateBusiness/NavBar';
 import Footer from '../../Pages/PageFooterLayouts/Footer1';
-//Import components                         
+//Import components
 import axios from 'axios';
 import GalleryPhoto from '../../../components/GalleryPhoto';
 const CorporateGallery = () => {
@@ -27,7 +27,7 @@ const CorporateGallery = () => {
       },
     };
     axios
-      .get('http://localhost:5001/api/v1/gallery', config)
+      .get('http://localhost:5001/api/v1/gallery/allgallery', config)
       .then((res) => {
         console.log(res.data);
         setGallery(res.data.gallery);
@@ -93,7 +93,7 @@ const CorporateGallery = () => {
                     md={6}
                     xs={12}
                     key={key}
-                    className="mt-4 pt-2 picture-item d-flex"
+                    className="mt-4 pt-2 d-flex"
                   >
                     <GalleryPhoto key={gallery._id} {...gallery} />
                   </Col>

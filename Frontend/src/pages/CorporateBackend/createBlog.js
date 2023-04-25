@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'reactstrap';
+import { Button, Form, FormText, Input } from 'reactstrap';
 import { useAppContext } from '../../context/appContext';
 import Alert from '../../components/Alert';
 import BlogFormRow from '../../components/BlogFormRow';
+import BlogQuill from '../../components/BlogQuill';
 import axios from 'axios';
 
 const addBlog = () => {
@@ -11,18 +12,30 @@ const addBlog = () => {
     isEditing,
     showAlert,
     displayAlert,
-    title,
+    blogTitle,
     blogImage,
-    handleChange,
     clearValues,
+    handleFileChange,
+    handleChange,
     createBlog,
     editBlog,
+    blogContent,
   } = useAppContext();
+
+  const handlefileChange = (e) => {
+    const name = e.target.name;
+    const file = e.target.files[0];
+    handleFileChange({ file, name });
+  };
+  const handletextChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    handleChange({ value, name });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!title || !blogImage) {
+    if (!blogImage || !blogTitle || !blogContent) {
       displayAlert();
       return;
     }
@@ -30,12 +43,8 @@ const addBlog = () => {
       editBlog();
       return;
     }
-    createBlog();
-  };
-  const handleJobInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    handleChange({ value, name });
+    const currentBlog = { blogTitle, blogContent, blogImage };
+    createBlog(currentBlog);
   };
   return (
     <div>
@@ -46,17 +55,23 @@ const addBlog = () => {
         {showAlert && <Alert />}
         <BlogFormRow
           type="text"
-          labelText="title"
-          name="title"
-          value={title}
-          handleChange={handleJobInput}
+          labelText="blogTitle"
+          name="blogTitle"
+          value={blogTitle}
+          handleChange={handletextChange}
+        />
+        <Input
+          className="mb-3"
+          type="file"
+          name="blogImage"
+          onChange={handlefileChange}
         />
         <BlogFormRow
-          type="text"
-          labelText="blogImage"
-          name="blogImage"
-          value={blogImage}
-          handleChange={handleJobInput}
+          type="textarea"
+          labelText="blogContent"
+          name="blogContent"
+          value={blogContent}
+          handleChange={handletextChange}
         />
         <Button
           className="w-100 btn-warning"
