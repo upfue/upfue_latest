@@ -190,7 +190,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
-      blogs: action.payload.blogs,
+      blogsBackend: action.payload.blogsBackend,
       totalBlogs: action.payload.totalBlogs,
       numOfPages: action.payload.numOfPages,
     };

@@ -14,5 +14,5 @@ router
   .route("/")
   .post(upload.single("file"), authenticateUser, createSingleImage)
   .get(authenticateUser, getUserImages);
-router.route("/allgallery").get(authenticateUser, getAllImages);
+router.route("/allgallery").get(getAllImages);
 export default router;

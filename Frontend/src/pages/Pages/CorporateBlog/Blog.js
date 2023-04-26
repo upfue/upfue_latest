@@ -19,57 +19,47 @@ class Blogs extends Component {
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: {
-        Authorization: 'Bearer ' + token,
-        'Content-Type': 'multipart/form-data;',
-      },
-    };
     axios
-      .get('http://localhost:5001/api/v1/blog/', config)
+      .get('http://localhost:5001/api/v1/blog/allblogs')
       .then((res) => {
-        console.log(res.data);
-        this.setState({ blogs: res.data.blogs });
-        console.log(res.data.blogs);
+        this.setState({ blogs: res.data });
       })
       .catch((err) => {
         console.log(err);
       });
   }
   render() {
-    const { isLoading, blogs, totalBlogs } = this.state;
-    if (isLoading) {
-      return <Loading center />;
-    }
+    // const { isLoading, blogs, totalBlogs } = this.state;
+    // if (isLoading) {
+    //   return <Loading center />;
+    // }
 
-    if (blogs.length === 0) {
-      return (
-        <Wrapper>
-          <h1 className="text-center" style={{ margin: `300px 0px` }}>
-            No blogs to display...
-          </h1>
-        </Wrapper>
-      );
-    }
+    // if (blogs.length === 0) {
+    //   return (
+    //     <Wrapper>
+    //       <h1 className="text-center" style={{ margin: `300px 0px` }}>
+    //         No blogs to display...
+    //       </h1>
+    //     </Wrapper>
+    //   );
+    // }
     return (
       <React.Fragment>
         <section className="section">
           <Container>
-            <div> 
+            <div>
               <Row>
-                {blogs.length > 0 &&
-                  blogs.map((item, key) => (
-                    <Col
-                      lg={4}
-                      md={6}
-                      xs={12}
-                      key={key}
-                      className="mt-4 pt-2 picture-item"
-                    >
-                      <BlogFrontend key={item._id} {...item} />
-                    </Col>
-                  ))}
+                {(this.state.blogs || []).map((item, key) => (
+                  <Col
+                    lg={4}
+                    md={6}
+                    xs={12}
+                    key={key}
+                    className="mt-4 pt-2 picture-item"
+                  >
+                    <BlogFrontend key={item._id} {...item} />
+                  </Col>
+                ))}
               </Row>
             </div>
           </Container>

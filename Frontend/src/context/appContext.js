@@ -51,6 +51,7 @@ const initialState = {
   blogImage: '',
   blogContent: '',
   blogs: [],
+  blogsBackend: [],
   totalBlogs: 0,
   numOfPages: 1,
   page: 1,
@@ -205,8 +206,29 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const getBlogs = async () => {
+  const getAllBlogs = async () => {
     let url = '/blog';
+
+    dispatch({ type: GET_BLOGS_BEGIN });
+    try {
+      const { data } = await authFetch(url);
+      const { blogsBackend, totalBlogs, numOfPages } = data;
+      dispatch({
+        type: GET_BLOGS_SUCCESS,
+        payload: {
+          blogsBackend,
+          totalBlogs,
+          numOfPages,
+        },
+      });
+    } catch (error) {
+      console.log(error.response);
+      logoutUser();
+    }
+    clearAlert();
+  };
+  const getBlogs = async () => {
+    let url = '/blog/allblogs';
 
     dispatch({ type: GET_BLOGS_BEGIN });
     try {
@@ -257,7 +279,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: DELETE_BLOG_BEGIN });
     try {
       await authFetch.delete(`/blog/${blogId}`);
-      getBlogs();
+      getAllBlogs();
     } catch (error) {
       logoutUser();
     }
@@ -298,6 +320,7 @@ const AppProvider = ({ children }) => {
         getBlogs,
         setEditBlog,
         deleteBlog,
+        getAllBlogs,
         editBlog,
         createGallery,
         handleFileChange,

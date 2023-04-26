@@ -32,18 +32,17 @@ const createBlog = async (req, res) => {
 
 //GET BLOGS
 const getUserBlog = async (req, res) => {
-  const blogs = await Blog.find({ createdBy: req.user.userId }).populate(
+  const blogsBackend = await Blog.find({ createdBy: req.user.userId }).populate(
     "createdBy",
     ["name"]
   );
-  console.log(blogs);
   res
     .status(StatusCodes.OK)
-    .json({ blogs, totalBlogs: blogs.length, numOfPages: 1 });
+    .json({ blogsBackend, totalBlogs: blogsBackend.length, numOfPages: 1 });
 };
 
 const getAllBlog = async (req, res) => {
-  const blogs = await Blog.find();
+  const blogs = await Blog.find().populate("createdBy", ["name"]);
   res.status(StatusCodes.OK).json(blogs);
 };
 

@@ -24,6 +24,6 @@ router
   .route("/:id")
   .delete(authenticateUser, deleteBlog)
   .patch(authenticateUser, updateBlog)
-  .get(authenticateUser, getBlogDetail);
+  .get(getBlogDetail);
 
 export default router;

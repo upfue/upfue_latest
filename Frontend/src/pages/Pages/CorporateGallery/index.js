@@ -19,15 +19,8 @@ import GalleryPhoto from '../../../components/GalleryPhoto';
 const CorporateGallery = () => {
   const [gallery, setGallery] = useState([]);
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: {
-        Authorization: 'Bearer ' + token,
-        'Content-Type': 'multipart/form-data;',
-      },
-    };
     axios
-      .get('http://localhost:5001/api/v1/gallery/allgallery', config)
+      .get('http://localhost:5001/api/v1/gallery/allgallery')
       .then((res) => {
         console.log(res.data);
         setGallery(res.data.gallery);

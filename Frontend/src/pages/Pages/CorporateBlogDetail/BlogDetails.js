@@ -16,15 +16,8 @@ const BlogDetails = () => {
   const [authorInfo, setAuthorInfo] = useState([]);
   const { id } = useParams();
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: {
-        Authorization: 'Bearer ' + token,
-        'Content-Type': 'multipart/form-data;',
-      },
-    };
     axios
-      .get(`http://localhost:5001/api/v1/blog/${id}`, config)
+      .get(`http://localhost:5001/api/v1/blog/${id}`)
       .then((res) => {
         setBlogInfo(res.data);
         setAuthorInfo(res.data.createdBy);
