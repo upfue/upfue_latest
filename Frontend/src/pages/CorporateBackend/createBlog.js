@@ -40,7 +40,8 @@ const addBlog = () => {
       return;
     }
     if (isEditing) {
-      editBlog();
+      const currentBlog = { blogTitle, blogContent, blogImage };
+      editBlog(currentBlog);
       return;
     }
     const currentBlog = { blogTitle, blogContent, blogImage };

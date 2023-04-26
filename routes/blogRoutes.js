@@ -23,7 +23,7 @@ router.route("/allblogs").get(getAllBlog);
 router
   .route("/:id")
   .delete(authenticateUser, deleteBlog)
-  .patch(authenticateUser, updateBlog)
+  .patch(upload.single("file"), authenticateUser, updateBlog)
   .get(getBlogDetail);
 
 export default router;

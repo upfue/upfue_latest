@@ -50,8 +50,13 @@ const getAllBlog = async (req, res) => {
 
 //UPDATE BLOG
 const updateBlog = async (req, res) => {
+  const { originalname, path } = req.file;
+  const parts = originalname.split(".");
+  const ext = parts[parts.length - 1];
+  const newPath = path + "." + ext;
+  fs.renameSync(path, newPath);
+
   const { id: blogId } = req.params;
-  const { blogImage } = req.file;
   const { blogTitle, blogContent } = req.body;
   // if (!blogTitle || !blogImage || blogContent) {
   //   throw new BadRequestError("Please provide all values");
@@ -66,7 +71,7 @@ const updateBlog = async (req, res) => {
   checkPermissions(req.user, blog.createdBy);
 
   blog.blogTitle = blogTitle;
-  blog.blogImage = blogImage;
+  blog.blogImage = newPath;
   blog.blogContent = blogContent;
 
   await blog.save();

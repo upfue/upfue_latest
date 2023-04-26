@@ -212,7 +212,6 @@ const AppProvider = ({ children }) => {
   };
 
   const createBlog = async (currentBlog) => {
-    console.log(currentBlog);
     dispatch({ type: CREATE_BLOG_BEGIN });
     try {
       const data = new FormData();
@@ -278,16 +277,16 @@ const AppProvider = ({ children }) => {
   const setEditBlog = async (id) => {
     dispatch({ type: SET_EDIT_BLOG, payload: { id } });
   };
-  const editBlog = async () => {
+  const editBlog = async (currentBlog) => {
+    console.log(currentBlog);
     dispatch({ type: EDIT_BLOG_BEGIN });
     try {
-      const { blogTitle, blogImage, blogContent } = state;
+      const data = new FormData();
+      data.set('blogTitle', currentBlog.blogTitle);
+      data.set('blogContent', currentBlog.blogContent);
+      data.set('file', currentBlog.blogImage);
 
-      await fileFetch.patch(`/blog/${state.editBlogId}`, {
-        blogTitle,
-        blogImage,
-        blogContent,
-      });
+      await fileFetch.patch(`/blog/${state.editBlogId}`, data);
       dispatch({
         type: EDIT_BLOG_SUCCESS,
       });
