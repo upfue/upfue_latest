@@ -25,7 +25,9 @@ const getUserImages = async (req, res) => {
   res.status(StatusCodes.OK).json({ gallery });
 };
 const getAllImages = async (req, res) => {
-  const gallery = await Gallery.find();
+  const gallery = await Gallery.find()
+    .populate("createdBy", ["name"])
+    .sort({ createdAt: -1 });
   res.status(StatusCodes.OK).json({ gallery });
 };
 

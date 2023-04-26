@@ -55,7 +55,7 @@ class Blogs extends Component {
                     md={6}
                     xs={12}
                     key={key}
-                    className="mt-4 pt-2 picture-item"
+                    className="mt-4 pt-2 picture-item d-flex"
                   >
                     <BlogFrontend key={item._id} {...item} />
                   </Col>
