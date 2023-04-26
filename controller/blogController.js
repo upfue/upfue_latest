@@ -42,7 +42,9 @@ const getUserBlog = async (req, res) => {
 };
 
 const getAllBlog = async (req, res) => {
-  const blogs = await Blog.find().populate("createdBy", ["name"]);
+  const blogs = await Blog.find()
+    .populate("createdBy", ["name"])
+    .sort({ createdAt: -1 });
   res.status(StatusCodes.OK).json(blogs);
 };
 

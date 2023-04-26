@@ -70,7 +70,7 @@ const AppProvider = ({ children }) => {
   authFetch.interceptors.request.use(
     (config) => {
       config.headers['Authorization'] = `Bearer ${state.token}`;
-      config.headers['Content-Type'] = 'multipart/form-data;';
+      config.headers['Content-Type'] = 'application/json';
       return config;
     },
     (error) => {
@@ -79,6 +79,32 @@ const AppProvider = ({ children }) => {
   );
 
   authFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      console.log(error.response);
+      if (error.response.status === 500) {
+        logoutUser();
+      }
+      return Promise.reject(error);
+    },
+  );
+
+  const fileFetch = axios.create({
+    baseURL: 'http://localhost:5001/api/v1',
+  });
+  fileFetch.interceptors.request.use(
+    (config) => {
+      config.headers['Authorization'] = `Bearer ${state.token}`;
+      config.headers['Content-Type'] = 'multipart/form-data;';
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    },
+  );
+  fileFetch.interceptors.response.use(
     (response) => {
       return response;
     },
@@ -193,7 +219,7 @@ const AppProvider = ({ children }) => {
       data.set('blogTitle', currentBlog.blogTitle);
       data.set('blogContent', currentBlog.blogContent);
       data.set('file', currentBlog.blogImage);
-      await authFetch.post('/blog', data);
+      await fileFetch.post('/blog', data);
       dispatch({
         type: CREATE_BLOG_SUCCESS,
       });
@@ -211,7 +237,7 @@ const AppProvider = ({ children }) => {
 
     dispatch({ type: GET_BLOGS_BEGIN });
     try {
-      const { data } = await authFetch(url);
+      const { data } = await fileFetch(url);
       const { blogsBackend, totalBlogs, numOfPages } = data;
       dispatch({
         type: GET_BLOGS_SUCCESS,
@@ -232,7 +258,7 @@ const AppProvider = ({ children }) => {
 
     dispatch({ type: GET_BLOGS_BEGIN });
     try {
-      const { data } = await authFetch(url);
+      const { data } = await fileFetch(url);
       const { blogs, totalBlogs, numOfPages } = data;
       dispatch({
         type: GET_BLOGS_SUCCESS,
@@ -257,7 +283,7 @@ const AppProvider = ({ children }) => {
     try {
       const { blogTitle, blogImage, blogContent } = state;
 
-      await authFetch.patch(`/blog/${state.editBlogId}`, {
+      await fileFetch.patch(`/blog/${state.editBlogId}`, {
         blogTitle,
         blogImage,
         blogContent,
@@ -278,7 +304,7 @@ const AppProvider = ({ children }) => {
   const deleteBlog = async (blogId) => {
     dispatch({ type: DELETE_BLOG_BEGIN });
     try {
-      await authFetch.delete(`/blog/${blogId}`);
+      await fileFetch.delete(`/blog/${blogId}`);
       getAllBlogs();
     } catch (error) {
       logoutUser();
@@ -289,7 +315,7 @@ const AppProvider = ({ children }) => {
     try {
       const formData = new FormData();
       formData.set('file', currentFile);
-      const data = await authFetch.post('/gallery', formData);
+      const data = await fileFetch.post('/gallery', formData);
       const gallery = data;
       dispatch({
         type: CREATE_GALLERY_SUCCESS,

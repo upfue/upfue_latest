@@ -197,14 +197,15 @@ const reducer = (state, action) => {
   }
   if (action.type === SET_EDIT_BLOG) {
     // const blog = state.blogs.find((blog) => blog._id === action.payload.id);
-    const blog = state.blogs.find((blog) => blog._id === action.payload.id);
-    const { _id, title, blogImage } = blog;
+    const blog = state.blogsBackend.find((blog) => blog._id === action.payload.id);
+    const { _id, blogTitle, blogImage, blogContent } = blog;
     return {
       ...state,
       isEditing: true,
       editBlogId: _id,
       blogImage,
-      title,
+      blogTitle,
+      blogContent,
     };
   }
   if (action.type === DELETE_BLOG_BEGIN) {
