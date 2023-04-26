@@ -158,10 +158,7 @@ const AppProvider = ({ children }) => {
   const loginUser = async (currentUser) => {
     dispatch({ type: LOGIN_USER_BEGIN });
     try {
-      const { data } = await axios.post(
-        'http://localhost:5001/api/v1/auth/login',
-        currentUser,
-      );
+      const { data } = await authFetch.post('/auth/login', currentUser);
       const { user, token } = data;
       dispatch({ type: LOGIN_USER_SUCCESS, payload: { user, token } });
       addUserToLocalStorage({ user, token });

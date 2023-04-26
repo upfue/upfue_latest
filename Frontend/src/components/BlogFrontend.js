@@ -23,7 +23,7 @@ const BlogFrontend = ({
         <Card className="border-0 blog shadow overflow-hidden">
           <img
             style={{ height: `300px`, objectFit: `scale-down` }}
-            src={'http://localhost:5001/api/v1/blog/allblogs/' + blogImage}
+            src={'/api/v1/blog/allblogs/' + blogImage}
             className="img-fluid"
             alt=""
           />

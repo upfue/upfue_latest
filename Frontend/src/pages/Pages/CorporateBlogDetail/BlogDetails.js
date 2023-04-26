@@ -17,7 +17,7 @@ const BlogDetails = () => {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5001/api/v1/blog/${id}`)
+      .get(`/api/v1/blog/${id}`)
       .then((res) => {
         setBlogInfo(res.data);
         setAuthorInfo(res.data.createdBy);
@@ -54,7 +54,7 @@ const BlogDetails = () => {
 
                 <img
                   src={
-                    `http://localhost:5001/api/v1/blog/${id}/` +
+                    `/api/v1/blog/${id}/` +
                     blogInfo.blogImage
                   }
                   className="img-fluid rounded-md shadow"

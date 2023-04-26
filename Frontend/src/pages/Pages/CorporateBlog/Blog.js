@@ -20,7 +20,7 @@ class Blogs extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:5001/api/v1/blog/allblogs')
+      .get('/api/v1/blog/allblogs')
       .then((res) => {
         this.setState({ blogs: res.data });
       })
