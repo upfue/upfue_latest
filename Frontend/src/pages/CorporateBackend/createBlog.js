@@ -6,7 +6,7 @@ import BlogFormRow from '../../components/BlogFormRow';
 import BlogQuill from '../../components/BlogQuill';
 import axios from 'axios';
 
-const addBlog = () => {
+const createBlog = () => {
   const {
     isLoading,
     isEditing,
@@ -91,4 +91,4 @@ const addBlog = () => {
   );
 };
 
-export default addBlog;
+export default createBlog;

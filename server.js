@@ -10,13 +10,13 @@ import errorHandlerMiddleware from "./middlleware/error-handler.js";
 import authRouter from "./routes/authRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
 import galleryRouter from "./routes/galleryRoutes.js";
-import authenticateUser from "./middlleware/auth.js";
+import newsRouter from "./routes/newsRoutes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
 const app = express();
 dotenv.config();
-app.use(cors({origin: "http://localhost:3000" }));
+app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
@@ -52,6 +52,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/gallery", galleryRouter);
+app.use("api/v1/news", newsRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./Frontend/build", "index.html"));

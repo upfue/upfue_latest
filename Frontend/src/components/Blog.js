@@ -23,7 +23,7 @@ const Blog = ({
         <Card className="border-0 blog shadow overflow-hidden">
           <img
             style={{ height: `400px`, objectFit: `scale-down` }}
-            src={'/api/v1/blog/allblogs/' + blogImage}
+            src={'http://localhost:5001/api/v1/blog/allblogs/' + blogImage}
             className="img-fluid"
             alt=""
           />
@@ -37,7 +37,7 @@ const Blog = ({
               </li>
             </ul>
             <h5>
-              <Link to="#" className="card-title title text-dark">
+              <Link to="#" className="card-title title text-dark w-50">
                 {blogTitle}
               </Link>
             </h5>

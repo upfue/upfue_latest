@@ -5,6 +5,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import './assets/css/materialdesignicons.min.css';
 import './Apps.scss';
 import './index.css';
+import './assets/css/colors/default.css';
 import CorporateBusiness from './pages/CorporateBusiness';
 import ErrorPage from './pages/Pages/CorporateError';
 import CorporateServices from './pages/Pages/CorporateServices';
@@ -30,7 +31,7 @@ import PageLogin from './pages/Pages/AuthPages/Login.js';
 import CorporateBlogDetailTwo from './pages/Pages/CorporateBlogDetail2';
 import CorporateNewDetailOne from './pages/Pages/CorporateNewDetail1';
 import CorporateBlogDetailThree from './pages/Pages/CorporateBlogDetail3';
-import { Blog, New, Stats, SharedLayout } from './pages/CorporateBackend';
+import { New, Blog, Stats, SharedLayout } from './pages/CorporateBackend';
 import ProtectRoutes from './pages/Pages/ProtectRoutes';
 import CorporateNewDetailTwo from './pages/Pages/CorporateNewDetail2';
 import Profile from './pages/CorporateBackend/Profile';
@@ -49,7 +50,6 @@ import CorporateBlogDetail8 from './pages/Pages/CorporateBlogDetail8';
 import CorporateNewDetail7 from './pages/Pages/CorporateNewDetail7';
 import AllBlogs from './pages/CorporateBackend/AllBlogs';
 
-// import "./assets/css/colors/default.css";
 class App extends Component {
   render() {
     return (

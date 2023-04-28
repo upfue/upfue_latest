@@ -64,7 +64,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const authFetch = axios.create({
-    baseURL: '/api/v1',
+    baseURL: 'http://localhost:5001/api/v1',
   });
 
   authFetch.interceptors.request.use(
@@ -92,7 +92,7 @@ const AppProvider = ({ children }) => {
   );
 
   const fileFetch = axios.create({
-    baseURL: '/api/v1',
+    baseURL: 'http://localhost:5001/api/v1',
   });
   fileFetch.interceptors.request.use(
     (config) => {
@@ -219,9 +219,7 @@ const AppProvider = ({ children }) => {
       dispatch({
         type: CREATE_BLOG_SUCCESS,
       });
-      dispatch({
-        type: CLEAR_VALUES,
-      });
+      clearValues();
     } catch (error) {
       console.log(error);
     }

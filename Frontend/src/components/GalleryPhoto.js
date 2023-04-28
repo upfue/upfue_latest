@@ -22,7 +22,7 @@ const GalleryPhoto = ({ _id, GalleryImage, createdBy, createdAt }) => {
             <img
               height={400}
               style={{ objectFit: `scale-down`, width: `400px` }}
-              src={'/api/v1/gallery/' + GalleryImage}
+              src={'http://localhost:5001/api/v1/gallery/' + GalleryImage}
               alt="work"
             />
           </Link>

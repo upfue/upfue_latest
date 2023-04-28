@@ -154,8 +154,9 @@ const reducer = (state, action) => {
     const initialState = {
       isEditing: false,
       editBlogId: '',
-      title: '',
+      blogTitle: '',
       blogImage: '',
+      blogContent: '',
     };
     return {
       ...state,
@@ -197,7 +198,9 @@ const reducer = (state, action) => {
   }
   if (action.type === SET_EDIT_BLOG) {
     // const blog = state.blogs.find((blog) => blog._id === action.payload.id);
-    const blog = state.blogsBackend.find((blog) => blog._id === action.payload.id);
+    const blog = state.blogsBackend.find(
+      (blog) => blog._id === action.payload.id,
+    );
     const { _id, blogTitle, blogImage, blogContent } = blog;
     return {
       ...state,
