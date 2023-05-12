@@ -19,16 +19,22 @@ import GalleryPhoto from '../../../components/GalleryPhoto';
 const CorporateGallery = () => {
   const [gallery, setGallery] = useState([]);
   useEffect(() => {
-    axios
-      .get('/api/v1/gallery/allgallery')
-      .then((res) => {
-        console.log(res.data);
-        setGallery(res.data.gallery);
-        console.log(res.data.gallery);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const getGallery = () => {
+      axios
+        .get('/api/v1/gallery/allgallery')
+        .then((res) => {
+          console.log(res.data);
+          setGallery(res.data.gallery);
+          console.log(res.data.gallery);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    const reloadGallery = setInterval(() => {
+      getGallery();
+    }, 3000);
+    return () => clearInterval(reloadGallery);
   }, []);
 
   return (

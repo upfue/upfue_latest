@@ -47,7 +47,6 @@ const LoginPage = () => {
       displayAlert();
       return;
     }
-    console.log(values);
     const currentUser = { name, email, password };
     if (isAdmin) {
       loginUser(currentUser);
