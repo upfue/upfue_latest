@@ -40,7 +40,7 @@ const Gallery = () => {
         },
       };
       axios
-        .get('http://localhost:5001/api/v1/gallery', config)
+        .get('/api/v1/gallery', config)
         .then((res) => {
           setGallery(res.data.gallery);
         })

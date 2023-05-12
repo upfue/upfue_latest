@@ -20,7 +20,7 @@ const CorporateGallery = () => {
   const [gallery, setGallery] = useState([]);
   useEffect(() => {
     axios
-      .get('http://localhost:5001/api/v1/gallery/allgallery')
+      .get('/api/v1/gallery/allgallery')
       .then((res) => {
         console.log(res.data);
         setGallery(res.data.gallery);
