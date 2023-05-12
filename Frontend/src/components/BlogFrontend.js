@@ -21,7 +21,7 @@ const BlogFrontend = ({
     <Wrapper className="d-flex">
       <Card className="border-0 blog shadow overflow-hidden ">
         <img
-          src={'/api/v1/blog/allblogs/' + blogImage}
+          src={blogImage}
           className="img-fluid"
           alt=""
         />
