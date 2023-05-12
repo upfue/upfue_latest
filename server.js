@@ -16,7 +16,7 @@ import { fileURLToPath } from "url";
 
 const app = express();
 dotenv.config();
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
