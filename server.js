@@ -16,7 +16,7 @@ import { fileURLToPath } from "url";
 
 const app = express();
 dotenv.config();
-// app.use(cors());
+app.use(cors());
 app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
