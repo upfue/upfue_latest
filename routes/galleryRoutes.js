@@ -10,9 +10,9 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 const router = express.Router();
 const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_ACCESS_KEY_SECRET,
-  region: process.env.AWS_BUCKET_REGION,
+  accessKeyId: "AKIAUYIDH23A4PV3OVWQ",
+  secretAccessKey: "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",
+  region: "us-east-1",
 });
 const upload = multer({
   storage: multerS3({
