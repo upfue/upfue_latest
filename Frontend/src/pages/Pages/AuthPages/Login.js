@@ -20,7 +20,6 @@ import logo from '../../../assets/images/logo-icon.png';
 import { FormRow, Alert } from '../../../components';
 import { useAppContext } from '../../../context/appContext.js';
 import { useNavigate, Link } from 'react-router-dom';
-
 const initialState = {
   name: '',
   email: '',

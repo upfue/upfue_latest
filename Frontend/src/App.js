@@ -49,7 +49,11 @@ import CorporateBlogDetail7 from './pages/Pages/CorporateBlogDetail7';
 import CorporateBlogDetail8 from './pages/Pages/CorporateBlogDetail8';
 import CorporateNewDetail7 from './pages/Pages/CorporateNewDetail7';
 import AllBlogs from './pages/CorporateBackend/AllBlogs';
-
+import { Amplify } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 class App extends Component {
   render() {
     return (

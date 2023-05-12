@@ -31,23 +31,27 @@ const Gallery = () => {
   };
   const [gallery, setGallery] = useState([]);
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: {
-        Authorization: 'Bearer ' + token,
-        'Content-Type': 'multipart/form-data;',
-      },
+    const getGallery = () => {
+      const token = localStorage.getItem('token');
+      const config = {
+        headers: {
+          Authorization: 'Bearer ' + token,
+          'Content-Type': 'multipart/form-data;',
+        },
+      };
+      axios
+        .get('http://localhost:5001/api/v1/gallery', config)
+        .then((res) => {
+          setGallery(res.data.gallery);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     };
-    axios
-      .get('http://localhost:5001/api/v1/gallery', config)
-      .then((res) => {
-        console.log(res.data);
-        setGallery(res.data.gallery);
-        console.log(res.data.gallery);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const reloadGallery = setInterval(() => {
+      getGallery();
+    }, 3000);
+    return () => clearInterval(reloadGallery);
   }, []);
 
   return (

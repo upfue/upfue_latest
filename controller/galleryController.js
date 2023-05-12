@@ -4,17 +4,12 @@ import Gallery from "../models/Gallery.js";
 import fs from "fs";
 
 const createSingleImage = async (req, res) => {
-  const { originalname, path } = req.file;
-  const parts = originalname.split(".");
-  const ext = parts[parts.length - 1];
-  const newPath = path + "." + ext;
-  fs.renameSync(path, newPath);
-
+  console.log(req.file);
   if (!req.file) {
     throw new BadRequestError("Please upload an image");
   }
   const gallery = await Gallery.create({
-    GalleryImage: newPath,
+    GalleryImage: req.file.location,
     createdBy: req.user.userId,
   });
   res.status(StatusCodes.CREATED).json(gallery);

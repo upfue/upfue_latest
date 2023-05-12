@@ -15,7 +15,7 @@
     "feather-icons-react": "^0.5.0",
     "formik": "^2.2.9",
     "moment": "^2.29.4",
-    "node-sass": "^7.0.1",
+    "node-sass": "^8.0.0",
     "normalize.css": "^8.0.1",
     "npm": "^8.13.2",
     "number-counter": "^1.0.3",
@@ -54,9 +54,10 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
+  "module": "commonjs",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\"",
@@ -116,6 +117,7 @@
   "devDependencies": {
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-react": "^7.20.6",
-    "prettier": "^2.1.1"
+    "prettier": "^2.1.1",
+    "react-app-rewired": "^2.2.1"
   }
 }

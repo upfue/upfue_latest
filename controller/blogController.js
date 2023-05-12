@@ -11,20 +11,15 @@ import mongoose from "mongoose";
 
 //CREATE BLOGS
 const createBlog = async (req, res) => {
-  const { originalname, path } = req.file;
-  const parts = originalname.split(".");
-  const ext = parts[parts.length - 1];
-  const newPath = path + "." + ext;
-  fs.renameSync(path, newPath);
   const { blogTitle, blogContent } = req.body;
 
-  if (!newPath) {
+  if (!req.file) {
     throw new BadRequestError("Please upload an image");
   }
   const blog = await Blog.create({
     blogTitle,
     blogContent,
-    blogImage: newPath,
+    blogImage: req.file.location,
     createdBy: req.user.userId,
   });
   res.status(StatusCodes.CREATED).json(blog);
