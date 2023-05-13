@@ -53,10 +53,7 @@ const BlogDetails = () => {
                 </ul>
 
                 <img
-                  src={
-                    `/api/v1/blog/${id}/` +
-                    blogInfo.blogImage
-                  }
+                  src={blogInfo.blogImage}
                   className="img-fluid rounded-md shadow"
                   alt=""
                 />
