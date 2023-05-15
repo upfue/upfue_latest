@@ -46,13 +46,16 @@ import {
 import axios from 'axios';
 
 const token = localStorage.getItem('token');
+const user = localStorage.getItem('user');
 
 const initialState = {
   isLoading: false,
   showAlert: false,
   alertText: '',
   alertType: '',
-  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
+  user: localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : null,
   token: token,
   showSideBar: false,
   isEditing: false,
