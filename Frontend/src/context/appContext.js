@@ -53,9 +53,7 @@ const initialState = {
   showAlert: false,
   alertText: '',
   alertType: '',
-  user: localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user'))
-    : null,
+  user: user ? JSON.parse(user) : null,
   token: token,
   showSideBar: false,
   isEditing: false,
