@@ -29,6 +29,7 @@ import {
   CREATE_GALLERY_ERROR,
   HANDLE_FILE_CHANGE,
   HANDLE_QUILL_CHANGE,
+  DELETE_GALLERY_BEGIN,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -255,6 +256,9 @@ const reducer = (state, action) => {
       alertType: 'danger',
       alertText: action.payload.msg,
     };
+  }
+  if (action.type === DELETE_GALLERY_BEGIN) {
+    return { ...state, isLoading: true };
   }
   throw new Error(`no such action: ${action.type}`);
 };

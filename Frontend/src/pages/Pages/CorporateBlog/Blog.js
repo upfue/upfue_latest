@@ -29,20 +29,20 @@ class Blogs extends Component {
       });
   }
   render() {
-    // const { isLoading, blogs, totalBlogs } = this.state;
-    // if (isLoading) {
-    //   return <Loading center />;
-    // }
+    const { isLoading, blogs, totalBlogs } = this.state;
+    if (isLoading) {
+      return <Loading center />;
+    }
 
-    // if (blogs.length === 0) {
-    //   return (
-    //     <Wrapper>
-    //       <h1 className="text-center" style={{ margin: `300px 0px` }}>
-    //         No blogs to display...
-    //       </h1>
-    //     </Wrapper>
-    //   );
-    // }
+    if (blogs.length === 0) {
+      return (
+        <Wrapper>
+          <h1 className="text-center" style={{ margin: `300px 0px` }}>
+            No blogs to display...
+          </h1>
+        </Wrapper>
+      );
+    }
     return (
       <React.Fragment>
         <section className="section">

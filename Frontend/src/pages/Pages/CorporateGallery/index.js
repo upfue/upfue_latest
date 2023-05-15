@@ -15,8 +15,11 @@ import NavBar from '../../CorporateBusiness/NavBar';
 import Footer from '../../Pages/PageFooterLayouts/Footer1';
 //Import components
 import axios from 'axios';
-import GalleryPhoto from '../../../components/GalleryPhoto';
+import GalleryPhotoFrontend from '../../../components/GalleryPhotoFrontend';
+import Loading from '../../../components/Loading';
+import { useAppContext } from '../../../context/appContext';
 const CorporateGallery = () => {
+  const { isLoading } = useAppContext;
   const [gallery, setGallery] = useState([]);
   useEffect(() => {
     const getGallery = () => {
@@ -85,6 +88,10 @@ const CorporateGallery = () => {
         <Container>
           <div>
             <Row>
+              {gallery.length === 0 && (
+                <h1 className="text-center">No images to display...</h1>
+              )}
+              {isLoading && <Loading />}
               {gallery.length > 0 &&
                 gallery.map((gallery, key) => (
                   <Col
@@ -94,7 +101,7 @@ const CorporateGallery = () => {
                     key={key}
                     className="mt-4 pt-2 d-flex"
                   >
-                    <GalleryPhoto key={gallery._id} {...gallery} />
+                    <GalleryPhotoFrontend key={gallery._id} {...gallery} />
                   </Col>
                 ))}
             </Row>

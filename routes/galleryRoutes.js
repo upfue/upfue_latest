@@ -2,6 +2,7 @@ import {
   createSingleImage,
   getUserImages,
   getAllImages,
+  deleteSingleImage,
 } from "../controller/galleryController.js";
 import express from "express";
 import authenticateUser from "../middlleware/auth.js";
@@ -10,9 +11,9 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 const router = express.Router();
 const s3 = new AWS.S3({
-  accessKeyId: "AKIAUYIDH23A4PV3OVWQ",
-  secretAccessKey: "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",
-  region: "us-east-1",
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_ACCESS_KEY_SECRET,
+  region: process.env.AWS_BUCKET_REGION,
 });
 const upload = multer({
   storage: multerS3({
@@ -31,4 +32,5 @@ router
   .post(upload.single("file"), authenticateUser, createSingleImage)
   .get(authenticateUser, getUserImages);
 router.route("/allgallery").get(getAllImages);
+router.route("/:id").delete(authenticateUser, deleteSingleImage);
 export default router;

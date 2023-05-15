@@ -31,6 +31,7 @@ import {
   CREATE_GALLERY_ERROR,
   HANDLE_FILE_CHANGE,
   HANDLE_QUILL_CHANGE,
+  DELETE_GALLERY_BEGIN,
 } from './actions';
 import axios from 'axios';
 
@@ -324,6 +325,14 @@ const AppProvider = ({ children }) => {
     }
     clearAlert();
   };
+  const deleteGallery = async (galleryId) => {
+    dispatch({ type: DELETE_GALLERY_BEGIN });
+    try {
+      await fileFetch.delete(`/gallery/${galleryId}`);
+    } catch (error) {
+      logoutUser();
+    }
+  };
   return (
     <AppContext.Provider
       value={{
@@ -345,6 +354,7 @@ const AppProvider = ({ children }) => {
         createGallery,
         handleFileChange,
         handleQuillChange,
+        deleteGallery,
       }}
     >
       {children}

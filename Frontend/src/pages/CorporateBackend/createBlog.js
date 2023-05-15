@@ -83,7 +83,11 @@ const createBlog = () => {
         >
           Clear
         </Button>
-        <Button className="w-100 mt-3" type="submit" onClick={handleSubmit}>
+        <Button
+          className="w-100 mt-3 btn-success"
+          type="submit"
+          onClick={handleSubmit}
+        >
           Submit
         </Button>
       </Form>
