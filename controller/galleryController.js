@@ -5,7 +5,6 @@ import {
   UnAuthenticatedError,
 } from "../errors/index.js";
 import Gallery from "../models/Gallery.js";
-import fs from "fs";
 import checkPermissions from "../utils/checkPermissions.js";
 
 const createSingleImage = async (req, res) => {

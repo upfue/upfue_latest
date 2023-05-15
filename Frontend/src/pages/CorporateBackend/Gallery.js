@@ -4,7 +4,6 @@ import { Button, Input, Col, Row, Card, CardBody } from 'reactstrap';
 import { useAppContext } from '../../context/appContext';
 import GalleryPhoto from '../../components/GalleryPhoto';
 import Alert from '../../components/Alert';
-import Loading from '../../components/Loading';
 
 const Gallery = () => {
   const {
@@ -69,7 +68,6 @@ const Gallery = () => {
           Upload
         </Button>
       </form>
-      {isLoading && <Loading center />}
       <div>
         <Row>
           {gallery.length > 0 &&

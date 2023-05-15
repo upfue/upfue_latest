@@ -38,9 +38,9 @@ import JobPosition from './pages/CorporateBackend/JobPosition';
 import Gallery from './pages/CorporateBackend/Gallery';
 import CorporateNewDetailFive from './pages/Pages/CorporateNewDetail5';
 import CorporateNewDetailSix from './pages/Pages/CorporateNewDetail6';
-import AllJobs from './pages/CorporateBackend/AllJobs';
 import CorporateNewDetail7 from './pages/Pages/CorporateNewDetail7';
 import AllBlogs from './pages/CorporateBackend/AllBlogs';
+import AllNews from './pages/CorporateBackend/AllNews';
 class App extends Component {
   render() {
     return (
@@ -62,7 +62,7 @@ class App extends Component {
             <Route path="/gallery" element={<CorporateGallery />} />
             <Route path="/contactus" element={<CorporateContact />} />
             <Route path="/news" element={<CorporateNew />} />
-            <Route path="/news-details" element={<CorporateNewDetail />} />
+            <Route path="/news-details/:id" element={<CorporateNewDetail />} />
             <Route path="/news-details-1" element={<CorporateNewDetailOne />} />
             <Route path="/news-details-2" element={<CorporateNewDetailTwo />} />
             <Route
@@ -99,7 +99,7 @@ class App extends Component {
               <Route path="gallery" element={<Gallery />} />
               <Route path="job-position" element={<JobPosition />} />
               <Route path="profile" element={<Profile />} />
-              <Route path="all-jobs" element={<AllJobs />} />
+              <Route path="all-news" element={<AllNews />} />
               <Route path="all-blogs" element={<AllBlogs />} />
             </Route>
           </Routes>

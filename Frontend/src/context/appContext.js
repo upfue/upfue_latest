@@ -32,6 +32,16 @@ import {
   HANDLE_FILE_CHANGE,
   HANDLE_QUILL_CHANGE,
   DELETE_GALLERY_BEGIN,
+  CREATE_NEWS_BEGIN,
+  CREATE_NEWS_SUCCESS,
+  CREATE_NEWS_ERROR,
+  GET_NEWS_BEGIN,
+  GET_NEWS_SUCCESS,
+  DELETE_NEWS_BEGIN,
+  SET_EDIT_NEWS,
+  EDIT_NEWS_BEGIN,
+  EDIT_NEWS_SUCCESS,
+  EDIT_NEWS_ERROR,
 } from './actions';
 import axios from 'axios';
 
@@ -57,6 +67,9 @@ const initialState = {
   numOfPages: 1,
   page: 1,
   galleryImage: '',
+  newsBackend: [],
+  totalNews: 0,
+  editNewsId: '',
 };
 
 const AppContext = React.createContext();
@@ -333,6 +346,78 @@ const AppProvider = ({ children }) => {
       logoutUser();
     }
   };
+
+  const createNews = async (currentNews) => {
+    dispatch({ type: CREATE_NEWS_BEGIN });
+    try {
+      const data = new FormData();
+      data.set('newsTitle', currentNews.newsTitle);
+      data.set('newsContent', currentNews.newsContent);
+      data.set('file', currentNews.newsImage);
+      await fileFetch.post('/news', data);
+      dispatch({
+        type: CREATE_NEWS_SUCCESS,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    clearAlert();
+  };
+  const getAllNews = async () => {
+    let url = '/news';
+
+    dispatch({ type: GET_NEWS_BEGIN });
+    try {
+      const { data } = await fileFetch(url);
+      const { newsBackend, totalNews, numOfPages } = data;
+      dispatch({
+        type: GET_NEWS_SUCCESS,
+        payload: {
+          newsBackend,
+          totalNews,
+          numOfPages,
+        },
+      });
+      console.log(data);
+    } catch (error) {
+      console.log(error.response);
+      logoutUser();
+    }
+    clearAlert();
+  };
+  const deleteNews = async (newsId) => {
+    dispatch({ type: DELETE_NEWS_BEGIN });
+    try {
+      await fileFetch.delete(`/news/${newsId}`);
+      getAllNews();
+    } catch (error) {
+      logoutUser();
+    }
+  };
+  const setEditNews = async (id) => {
+    dispatch({ type: SET_EDIT_NEWS, payload: { id } });
+  };
+  const editNews = async (currentNews) => {
+    dispatch({ type: EDIT_NEWS_BEGIN });
+    try {
+      const data = new FormData();
+      data.set('newsTitle', currentNews.newsTitle);
+      data.set('newsContent', currentNews.newsContent);
+      data.set('file', currentNews.newsImage);
+      await fileFetch.patch(`/news/${state.editNewsId}`, data);
+      dispatch({
+        type: EDIT_NEWS_SUCCESS,
+      });
+      dispatch({ type: CLEAR_VALUES });
+    } catch (error) {
+      if (error.response.status === 401) return;
+      dispatch({
+        type: EDIT_NEWS_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
+  };
   return (
     <AppContext.Provider
       value={{
@@ -355,6 +440,11 @@ const AppProvider = ({ children }) => {
         handleFileChange,
         handleQuillChange,
         deleteGallery,
+        createNews,
+        getAllNews,
+        deleteNews,
+        setEditNews,
+        editNews,
       }}
     >
       {children}

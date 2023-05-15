@@ -30,6 +30,16 @@ import {
   HANDLE_FILE_CHANGE,
   HANDLE_QUILL_CHANGE,
   DELETE_GALLERY_BEGIN,
+  CREATE_NEWS_BEGIN,
+  CREATE_NEWS_SUCCESS,
+  CREATE_NEWS_ERROR,
+  GET_NEWS_BEGIN,
+  GET_NEWS_SUCCESS,
+  DELETE_NEWS_BEGIN,
+  SET_EDIT_NEWS,
+  EDIT_NEWS_BEGIN,
+  EDIT_NEWS_SUCCESS,
+  EDIT_NEWS_ERROR,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -259,6 +269,78 @@ const reducer = (state, action) => {
   }
   if (action.type === DELETE_GALLERY_BEGIN) {
     return { ...state, isLoading: true };
+  }
+  if (action.type === CREATE_NEWS_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === CREATE_NEWS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'New News Created!',
+    };
+  }
+  if (action.type === CREATE_NEWS_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    };
+  }
+  if (action.type === GET_NEWS_BEGIN) {
+    return { ...state, isLoading: true, showAlert: false };
+  }
+  if (action.type === GET_NEWS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      newsBackend: action.payload.newsBackend,
+      totalNews: action.payload.totalNews,
+      numOfPages: action.payload.numOfPages,
+    };
+  }
+  if (action.type === DELETE_NEWS_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === SET_EDIT_NEWS) {
+    // const blog = state.blogs.find((blog) => blog._id === action.payload.id);
+    const news = state.newsBackend.find(
+      (news) => news._id === action.payload.id,
+    );
+    const { _id, newsTitle, newsContent, newsImage } = news;
+    return {
+      ...state,
+      isEditing: true,
+      editNewsId: _id,
+      newsImage,
+      newsTitle,
+      newsContent,
+    };
+  }
+  if (action.type === EDIT_NEWS_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+  if (action.type === EDIT_NEWS_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'News Updated!',
+    };
+  }
+  if (action.type === EDIT_NEWS_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    };
   }
   throw new Error(`no such action: ${action.type}`);
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoBarChartSharp } from 'react-icons/io5';
 import { MdQueryStats } from 'react-icons/md';
-import { FaWpforms } from 'react-icons/fa';
+import { FaAddressBook, FaAudible, FaImage, FaJsSquare, FaWpforms } from 'react-icons/fa';
 import { ImProfile } from 'react-icons/im';
 
 const links = [
@@ -27,25 +27,25 @@ const links = [
     id: 4,
     text: 'Create Job Positions',
     path: 'job-position',
-    icon: <FaWpforms />,
+    icon: <FaJsSquare />,
   },
   {
     id: 5,
     text: 'Upload Gallery',
     path: 'gallery',
-    icon: <FaWpforms />,
+    icon: <FaImage />,
   },
   {
     id: 7,
     text: 'All Blogs',
     path: 'all-blogs',
-    icon: <FaWpforms />,
+    icon: <FaAddressBook />,
   },
   {
     id: 6,
-    text: 'All Jobs',
-    path: 'all-jobs',
-    icon: <FaWpforms />,
+    text: 'All News',
+    path: 'all-news',
+    icon: <FaAudible />,
   },
 
   {

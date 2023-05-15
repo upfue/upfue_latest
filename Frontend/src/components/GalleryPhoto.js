@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import { Button, Input, Col, Row, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { useAppContext } from '../context/appContext';
+
 const GalleryPhoto = ({ _id, GalleryImage, createdBy, createdAt }) => {
+  const { deleteGallery } = useAppContext();
   let date = moment(createdAt);
   date = date.format('Do MMM YYYY, LTS');
   return (

@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/gallery", galleryRouter);
-app.use("api/v1/news", newsRouter);
+app.use("/api/v1/news", newsRouter);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./Frontend/build", "index.html"));
