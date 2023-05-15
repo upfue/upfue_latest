@@ -1,7 +1,13 @@
 import React from 'react';
 import { IoBarChartSharp } from 'react-icons/io5';
 import { MdQueryStats } from 'react-icons/md';
-import { FaAddressBook, FaAudible, FaImage, FaJsSquare, FaWpforms } from 'react-icons/fa';
+import {
+  FaAddressBook,
+  FaAudible,
+  FaImage,
+  FaJsSquare,
+  FaWpforms,
+} from 'react-icons/fa';
 import { ImProfile } from 'react-icons/im';
 
 const links = [
